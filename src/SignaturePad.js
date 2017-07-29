@@ -43,6 +43,10 @@ class SignaturePad extends Component {
         this._signaturePad.off();
     }
 
+    get instance() {
+        return this._signaturePad;
+    }
+
     handleScroll() {
         this.scaleCanvas();
     }

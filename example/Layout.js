@@ -4,6 +4,10 @@ import SignaturePad from '../src';
 
 class Layout extends Component {
 
+    handleClear() {
+        this.signaturePad.instance.clear();
+    }
+
     renderTitle() {
         return (
             <div className="columns">
@@ -22,11 +26,11 @@ class Layout extends Component {
                     <div className="card">
                         <div className="card-content">
                             <div className="content">
-                                <SignaturePad />
+                                <SignaturePad ref={ref => this.signaturePad = ref} />
                             </div>
                         </div>
                         <footer className="card-footer">
-                            <a className="card-footer-item">Clear</a>
+                            <a className="card-footer-item" onClick={this.handleClear.bind(this)}>Clear</a>
                             <p className="card-footer-item">
                                 <span>sign above</span>
                             </p>

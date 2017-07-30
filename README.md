@@ -74,4 +74,4 @@ render() {
 }
 ...
 ```
-This will save the current canvas content to a base64 data string before performing the resize operation and load it in the canvas right after the resize operation finishes. **Note**: the repeated saving and loading of image data when resizing often will degrade the quality rapidly. There is no easy solution around this unfortunately. Resampling the image data is imagined to help significantly, but this is a rather costly operation in general and not something you would ideally do with JavaScript in the browser.
+This will save the current canvas content to a base64 data string before performing the resize operation and load it in the canvas right after the resize operation finishes. **Note**: the repeated saving and loading of image data when resizing often will degrade the quality rapidly. There is no easy solution around this unfortunately. Resampling the image data is imagined to help significantly, but this is a rather costly operation in general and not something you would ideally do with JavaScript in the browser on every resize event (even if throttled/debounced).

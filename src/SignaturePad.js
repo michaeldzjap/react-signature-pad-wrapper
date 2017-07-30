@@ -181,6 +181,8 @@ class SignaturePad extends Component {
 
         if (this.props.redrawOnResize && this._signaturePad) {
             this._signaturePad.fromDataURL(data);
+        } else {
+            this._signaturePad.clear();
         }
     }
 

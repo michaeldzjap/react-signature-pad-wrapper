@@ -11,7 +11,6 @@
         "watch": "cross-env NODE_ENV=development node -r babel-register node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=webpack.config.development.js",
         "clean:example": "rm -rf example/build",
         "build:example": "cross-env NODE_ENV=development node -r babel-register node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.example.js",
-        "watch:example": "cross-env NODE_ENV=development node -r babel-register node_modules/webpack/bin/webpack.js --watch --progress --hide-modules --config=webpack.config.example.js",
         "stats:dev": "cross-env NODE_ENV=development node -r babel-register node_modules/webpack/bin/webpack.js --profile --json > stats.development.json --config=webpack.config.development.js",
         "stats:prod": "cross-env NODE_ENV=production node -r babel-register node_modules/webpack/bin/webpack.js --profile --json > stats.production.json --config=webpack.config.production.js"
     },

@@ -3,13 +3,13 @@ A React wrapper for [signature pad](https://github.com/szimek/signature_pad).
 
 There are some other React packages that are based off the original *signature_pad* plugin (e.g. [react-signature-pad](https://github.com/blackjk3/react-signature-pad), [react-signature-canvas](https://github.com/agilgur5/react-signature-canvas)). This package is different in the sense that it relies on *signature_pad* as a dependency rather than an implementation that is based off of it (like the aforementioned packages).
 
-# Installation
+## Installation
 This package is available through npm:
 ```
 npm install --save react-signature-pad-wrapper
 ```
 
-# Usage
+## Usage
 This package implements exactly the same interface as the original *signature_pad* and adds a couple of extra features that make responsive behaviour a little easier to deal with. For a complete overview of the available options and callables see the documentation for [signature pad](https://github.com/szimek/signature_pad).
 
 Import the component like (ES6):
@@ -46,7 +46,7 @@ this.signaturePad.maxWidth = 10;
 this.signaturePad.penColor = 'rgb(66, 133, 244)';
 ```
 
-# Responsiveness
+## Responsiveness
 The HTML canvas object sucks when it comes to responsiveness. The approach taken with this plugin is to use a fixed size canvas when a height and width (in pixels) is explicitly passed in as a component property:
 ```
 ...
@@ -75,3 +75,10 @@ render() {
 ...
 ```
 This will save the current canvas content to a base64 data string before performing the resize operation and load it in the canvas right after the resize operation finishes. **Note**: the repeated saving and loading of image data when resizing often will degrade the quality rapidly. There is no easy solution around this unfortunately. Resampling the image data is imagined to help significantly, but this is a rather costly operation in general and not something you would ideally do with JavaScript in the browser on every resize event (even if throttled/debounced).
+
+## Example
+This project includes a simple example that demonstrates a responsive sketch pad. To build the example:
+```
+npm run build:example
+```
+Then open `example/index.html` in a browser of yout choice.

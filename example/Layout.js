@@ -20,7 +20,7 @@ class Layout extends Component {
         return (
             <div className="columns">
                 <div className="column">
-                    <h1 className="title">React-Signature-Pad</h1>
+                    <h1 className="title">React-Signature-Pad-Wrapper</h1>
                     <h2 className="subtitle">responsive example</h2>
                 </div>
             </div>

@@ -6,9 +6,9 @@ export default {
         bundle: './src/index'
     },
     output: {
-        library: 'react-signature-pad',
+        library: 'react-signature-pad-wrapper',
         libraryTarget: 'umd',
-        filename: 'react-signature-pad.min.js',
+        filename: 'react-signature-pad-wrapper.min.js',
         path: path.resolve(__dirname, 'dist')
     },
     module: {

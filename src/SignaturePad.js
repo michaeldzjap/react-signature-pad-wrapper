@@ -5,7 +5,7 @@ import { debounce } from 'throttle-debounce';
 
 class SignaturePad extends Component {
 
-    static displayName = 'react-signature-pad';
+    static displayName = 'react-signature-pad-wrapper';
 
     static propTypes = {
         width: PropTypes.number,

@@ -1,8 +1,8 @@
 {
-    "name": "react-signature-pad",
+    "name": "react-signature-pad-wrapper",
     "version": "0.0.1",
     "description": "A React component wrapper for signature_pad",
-    "main": "dist/react-signature-pad.min.js",
+    "main": "dist/react-signature-pad-wrapper.min.js",
     "es6": "src/index.js",
     "scripts": {
         "clean": "rm -rf dist",
@@ -23,10 +23,10 @@
     "license": "ISC",
     "repository": {
         "type": "git",
-        "url": "https://github.com/michaeldzjap/react-signature-pad.git"
+        "url": "https://github.com/michaeldzjap/react-signature-pad-wrapper.git"
     },
     "bugs": {
-        "url": "https://github.com/michaeldzjap/react-signature-pad/issues"
+        "url": "https://github.com/michaeldzjap/react-signature-pad-wrapper/issues"
     },
     "peerDependencies": {
         "react": "^15.5.0",

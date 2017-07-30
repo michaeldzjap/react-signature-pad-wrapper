@@ -10,7 +10,12 @@ class SignaturePad extends Component {
     static propTypes = {
         width: PropTypes.number,
         height: PropTypes.number,
-        options: PropTypes.object
+        options: PropTypes.object,
+        redrawOnResize: PropTypes.bool.isRequired
+    }
+
+    static defaultProps = {
+        redrawOnResize: false
     }
 
     constructor(props) {
@@ -43,8 +48,115 @@ class SignaturePad extends Component {
         this._signaturePad.off();
     }
 
+    /**
+     * Get the original signature_pad instance.
+     */
     get instance() {
         return this._signaturePad;
+    }
+
+    set dotSize(dotSize) {
+        this._signaturePad.dotSize = dotSize;
+    }
+
+    get dotSize() {
+        return this._signaturePad.dotSize;
+    }
+
+    set minWidth(minWidth) {
+        this._signaturePad.minWidth = minWidth;
+    }
+
+    get minWidth() {
+        return this._signaturePad.minWidth;
+    }
+
+    set maxWidth(maxWidth) {
+        this._signaturePad.maxWidth = maxWidth;
+    }
+
+    get maxWidth() {
+        return this._signaturePad.maxWidth;
+    }
+
+    set throttle(throttle) {
+        this._signaturePad.throttle = throttle;
+    }
+
+    get throttle() {
+        return this._signaturePad.throttle;
+    }
+
+    set backgroundColor(color) {
+        this._signaturePad.backgroundColor = color;
+    }
+
+    get backgroundColor() {
+        return this._signaturePad.backgroundColor;
+    }
+
+    set penColor(color) {
+        this._signaturePad.penColor = color;
+    }
+
+    get penColor() {
+        return this._signaturePad.penColor;
+    }
+
+    set velocityFilterWeight(weight) {
+        this._signaturePad.velocityFilterWeight = weight;
+    }
+
+    get velocityFilterWeight() {
+        return this._signaturePad.velocityFilterWeight;
+    }
+
+    set onBegin(fn) {
+        if (!(fn && typeof fn === 'function')) {
+            throw new Error('Invalid argument passed to onBegin()');
+        }
+
+        this._signaturePad.onBegin = fn;
+    }
+
+    set onEnd(fn) {
+        if (!(fn && typeof fn === 'function')) {
+            throw new Error('Invalid argument passed to onEnd()');
+        }
+
+        this._signaturePad.onEnd = fn;
+    }
+
+    isEmpty() {
+        return this._signaturePad.isEmpty();
+    }
+
+    clear() {
+        this._signaturePad.clear();
+    }
+
+    fromDataURL(base64String) {
+        this._signaturePad.fromDataURL(base64String);
+    }
+
+    toDataURL(mime) {
+        return this._signaturePad.toDataURL(mime);
+    }
+
+    fromData(data) {
+        this._signaturePad.fromData(data);
+    }
+
+    toData() {
+        return this._signaturePad.toData();
+    }
+
+    off() {
+        this._signaturePad.off();
+    }
+
+    on() {
+        this._signaturePad.on();
     }
 
     handleScroll() {
@@ -57,7 +169,7 @@ class SignaturePad extends Component {
         const height = (this.props.height || this._canvas.offsetHeight) * ratio;
 
         let data;
-        if (this._signaturePad) {
+        if (this.props.redrawOnResize && this._signaturePad) {
             data = this._signaturePad.toDataURL();
         }
 
@@ -67,7 +179,7 @@ class SignaturePad extends Component {
         const ctx = this._canvas.getContext('2d');
         ctx.scale(ratio, ratio);
 
-        if (this._signaturePad) {
+        if (this.props.redrawOnResize && this._signaturePad) {
             this._signaturePad.fromDataURL(data);
         }
     }

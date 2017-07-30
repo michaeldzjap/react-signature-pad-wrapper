@@ -8,6 +8,14 @@ class Layout extends Component {
         this.signaturePad.instance.clear();
     }
 
+    handleSave() {
+        if (this.signaturePad.isEmpty()) {
+            alert('Please provide a signature first.');
+        } else {
+            window.open(this.signaturePad.toDataURL());
+        }
+    }
+
     renderTitle() {
         return (
             <div className="columns">
@@ -26,7 +34,7 @@ class Layout extends Component {
                     <div className="card">
                         <div className="card-content">
                             <div className="content">
-                                <SignaturePad ref={ref => this.signaturePad = ref} />
+                                <SignaturePad redrawOnResize={true} ref={ref => this.signaturePad = ref} />
                             </div>
                         </div>
                         <footer className="card-footer">
@@ -34,6 +42,7 @@ class Layout extends Component {
                             <p className="card-footer-item">
                                 <span>sign above</span>
                             </p>
+                            <a className="card-footer-item" onClick={this.handleSave.bind(this)}>Save</a>
                         </footer>
                     </div>
                 </div>

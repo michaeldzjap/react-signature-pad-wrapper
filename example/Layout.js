@@ -22,7 +22,7 @@ class Layout extends Component {
     renderSignaturePad() {
         return (
             <div className="columns">
-                <div className="column">
+                <div className="column is-10-tablet is-offset-1-tablet is-8-desktop is-offset-2-desktop">
                     <div className="card">
                         <div className="card-content">
                             <div className="content">

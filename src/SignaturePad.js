@@ -58,6 +58,10 @@ class SignaturePad extends Component {
         return this._signaturePad;
     }
 
+    get canvas() {
+        return this._canvas;
+    }
+
     set dotSize(dotSize) {
         this._signaturePad.dotSize = dotSize;
     }

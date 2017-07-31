@@ -10,18 +10,21 @@ class SignaturePad extends Component {
     static propTypes = {
         width: PropTypes.number,
         height: PropTypes.number,
+        className: PropTypes.string,
         options: PropTypes.object,
-        redrawOnResize: PropTypes.bool.isRequired
+        redrawOnResize: PropTypes.bool.isRequired,
+        debounceInterval: PropTypes.number.isRequired
     }
 
     static defaultProps = {
-        redrawOnResize: false
+        redrawOnResize: false,
+        debounceInterval: 150
     }
 
     constructor(props) {
         super(props);
 
-        this._callScrollHandler = debounce(150, this.handleScroll.bind(this));
+        this._callScrollHandler = debounce(this.props.debounceInterval, this.handleScroll.bind(this));
     }
 
     componentDidMount() {
@@ -181,13 +184,13 @@ class SignaturePad extends Component {
 
         if (this.props.redrawOnResize && this._signaturePad) {
             this._signaturePad.fromDataURL(data);
-        } else {
+        } else if (this._signaturePad) {
             this._signaturePad.clear();
         }
     }
 
     render() {
-        return <canvas ref={ref => this._canvas = ref} />;
+        return <canvas className={this.props.className} ref={ref => this._canvas = ref} />;
     }
 }
 

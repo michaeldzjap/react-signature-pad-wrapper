@@ -40,7 +40,7 @@
         "babel-preset-stage-0": "^6.24.1",
         "babel-register": "^6.24.1",
         "bulma": "^0.4.4",
-        "cross-env": "^5.0.1",
+        "cross-env": "^5.0.2",
         "eslint": "^4.3.0",
         "eslint-plugin-react": "^7.1.0",
         "webpack": "^3.4.1"

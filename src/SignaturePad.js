@@ -28,11 +28,8 @@ class SignaturePad extends Component {
     }
 
     componentDidMount() {
-        if (!this.props.width) {
+        if (!this.props.width || !this.props.height) {
             this._canvas.style.width = '100%';
-        }
-        if (!this.props.height) {
-            this._canvas.style.height = '100%';
         }
         this.scaleCanvas();
 

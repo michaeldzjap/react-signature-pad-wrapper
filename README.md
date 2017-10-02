@@ -13,12 +13,12 @@ npm install --save react-signature-pad-wrapper
 This package implements exactly the same interface as the original *signature_pad* and adds a couple of extra features that make responsive behaviour a little easier to deal with. For a complete overview of the available options and callables see the documentation for [signature pad](https://github.com/szimek/signature_pad).
 
 Import the component like (ES6):
-```
+```javascript
 import SignaturePad from 'react-signature-pad-wrapper'
 ```
 
 Options may be passed as a component property during initialization:
-```
+```javascript
 ...
 render() {
   return <SignaturePad options={{minWidth: 5, maxWidth: 10, penColor: 'rgb(66, 133, 244)'}} />;
@@ -27,7 +27,7 @@ render() {
 ```
 
 or they can be set during runtime:
-```
+```javascript
 ...
 render() {
   return <SignaturePad ref={ref => this.signaturePad = ref} />;
@@ -35,7 +35,7 @@ render() {
 ...
 ```
 then from somewhere else in the code (assuming the ref is defined):
-```
+```javascript
 // Call an instance method
 this.signaturePad.clear();
 this.signaturePad.isEmpty();
@@ -48,7 +48,7 @@ this.signaturePad.penColor = 'rgb(66, 133, 244)';
 
 ## Responsiveness
 The HTML canvas object sucks when it comes to responsiveness. The approach taken with this plugin is to use a fixed size canvas when a height and width (in pixels) is explicitly passed in as a component property:
-```
+```javascript
 ...
 render() {
   return <SignaturePad width={500} height={500} />;
@@ -57,7 +57,7 @@ render() {
 ```
 
 If you want the component to be responsive, simply ommit the width and height property:
-```
+```javascript
 ...
 render() {
   return <SignaturePad />;
@@ -67,7 +67,7 @@ render() {
 The canvas width and height will now be updated whenever the window is resized (using a debounced handler). Changing the width and height properties of a HTML canvas object will erase its current content. 
 
 If you'd like to keep what is currently drawn on the canvas you can pass a `redrawOnResize` property to the component and set it to `true` (`redrawOnResize` is `false` by default):
-```
+```javascript
 ...
 render() {
   return <SignaturePad redrawOnResize={true} />;

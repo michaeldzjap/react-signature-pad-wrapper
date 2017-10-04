@@ -28,8 +28,8 @@
         "url": "https://github.com/michaeldzjap/react-signature-pad-wrapper/issues"
     },
     "peerDependencies": {
-        "react": "^16.0.0",
-        "react-dom": "^16.0.0"
+        "react": "^15.5.0 || ^16.0.0",
+        "react-dom": "^15.5.0 || ^16.0.0"
     },
     "devDependencies": {
         "babel-core": "^6.26.0",

@@ -41,7 +41,7 @@
         "babel-register": "^6.26.0",
         "bulma": "^0.5.3",
         "cross-env": "^5.0.5",
-        "eslint": "^4.7.2",
+        "eslint": "^4.8.0",
         "eslint-plugin-react": "^7.4.0",
         "webpack": "^3.6.0"
     },

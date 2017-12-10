@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import SigPad from 'signature_pad';
-import { debounce } from 'throttle-debounce';
+import debounce from 'throttle-debounce/debounce';
 
-class SignaturePad extends Component {
+class SignaturePad extends React.Component {
 
     static displayName = 'react-signature-pad-wrapper';
 

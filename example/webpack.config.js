@@ -3,12 +3,12 @@ import webpack from 'webpack';
 
 export default {
     entry: {
-        bundle: './example/app',
-        vendor: ['react', 'react-dom']
+        bundle: './app',
+        vendor: ['react', 'react-dom', 'prop-types']
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, 'example/build'),
+        path: path.resolve(__dirname, 'dist'),
         devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'
     },
     module: {
@@ -29,6 +29,12 @@ export default {
     plugins: [
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest']
+        }),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+                drop_console: false,
+            }
         })
     ],
     devtool: 'cheap-module-eval-source-map'

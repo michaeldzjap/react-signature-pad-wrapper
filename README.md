@@ -1,5 +1,5 @@
 # react-signature-pad-wrapper
-A React wrapper for [signature pad](https://github.com/szimek/signature_pad). 
+A React wrapper for [signature pad](https://github.com/szimek/signature_pad).
 
 There are some other React packages that are based off the original *signature_pad* plugin (e.g. [react-signature-pad](https://github.com/blackjk3/react-signature-pad), [react-signature-canvas](https://github.com/agilgur5/react-signature-canvas)). This package is different in the sense that it relies on *signature_pad* as a dependency rather than an implementation that is based off of it (like the aforementioned packages).
 
@@ -8,9 +8,13 @@ This package is available through npm:
 ```
 npm install --save react-signature-pad-wrapper
 ```
+In addition to *React* you will need to install the [prop-types](https://github.com/facebook/prop-types) package:
+```
+npm install --save prop-types
+```
 
 ## Usage
-This package implements exactly the same interface as the original *signature_pad* and adds a couple of extra features that make responsive behaviour a little easier to deal with. For a complete overview of the available options and callables see the documentation for [signature pad](https://github.com/szimek/signature_pad).
+This package implements exactly the same interface as the original *signature_pad* package and adds a couple of extra features that make responsive behaviour a little easier to deal with. For a complete overview of the available options and callables see the documentation for [signature pad](https://github.com/szimek/signature_pad).
 
 Import the component like (ES6):
 ```javascript
@@ -64,7 +68,7 @@ render() {
 }
 ...
 ```
-The canvas width and height will now be updated whenever the window is resized (using a debounced handler). Changing the width and height properties of a HTML canvas object will erase its current content. 
+The canvas width and height will now be updated whenever the window is resized (using a debounced handler). Changing the width and height properties of a HTML canvas object will erase its current content.
 
 If you'd like to keep what is currently drawn on the canvas you can pass a `redrawOnResize` property to the component and set it to `true` (`redrawOnResize` is `false` by default):
 ```javascript
@@ -81,4 +85,4 @@ This project includes a simple example that demonstrates a responsive sketch pad
 ```
 npm run build:example
 ```
-Then open `example/index.html` in a browser of yout choice.
+Then open `example/index.html` in a browser of your choice.

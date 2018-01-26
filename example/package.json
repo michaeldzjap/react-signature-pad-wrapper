@@ -36,8 +36,8 @@
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-0": "^6.24.1",
         "babel-register": "^6.26.0",
-        "eslint": "^4.15.0",
-        "eslint-plugin-react": "^7.5.1",
+        "eslint": "^4.16.0",
+        "eslint-plugin-react": "^7.6.0",
         "webpack": "^3.10.0"
     }
 }

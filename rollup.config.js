@@ -9,9 +9,9 @@ export default [
         input: 'src/index.js',
         output: {
             file: 'dist/react-signature-pad-wrapper.min.js',
-            format: 'cjs'
+            format: 'cjs',
+            sourcemap: true
         },
-        sourcemap: true,
         plugins: [
             eslint(),
             babel({

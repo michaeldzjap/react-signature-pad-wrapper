@@ -1,7 +1,7 @@
 import path from 'path';
-import webpack from 'webpack';
 
 export default {
+    mode: 'development',
     entry: {
         bundle: './app',
         vendor: ['react', 'react-dom', 'prop-types']
@@ -26,16 +26,12 @@ export default {
     resolve: {
         extensions: ['.js', '.jsx']
     },
-    plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ['vendor', 'manifest']
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-                drop_console: false,
-            }
-        })
-    ],
-    devtool: 'cheap-module-eval-source-map'
+    devtool: 'cheap-module-eval-source-map',
+    optimization: {
+        splitChunks: {
+            name: 'vendor',
+            minChunks: 2
+        },
+        noEmitOnErrors: true
+    }
 };

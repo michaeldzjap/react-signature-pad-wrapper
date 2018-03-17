@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, {PureComponent} from 'react';
 
 import SignaturePad from '../src';
 
-class Layout extends Component {
+class Layout extends PureComponent {
 
     handleClear() {
         this.signaturePad.instance.clear();
@@ -10,6 +10,7 @@ class Layout extends Component {
 
     handleSave() {
         if (this.signaturePad.isEmpty()) {
+            // eslint-disable-next-line no-alert
             alert('Please provide a signature first.');
         } else {
             window.open(this.signaturePad.toDataURL());
@@ -34,15 +35,27 @@ class Layout extends Component {
                     <div className="card">
                         <div className="card-content">
                             <div className="content">
-                                <SignaturePad redrawOnResize={true} ref={ref => this.signaturePad = ref} />
+                                <SignaturePad
+                                    redrawOnResize={true}
+                                    ref={ref => this.signaturePad = ref} />
                             </div>
                         </div>
                         <footer className="card-footer">
-                            <a className="card-footer-item" onClick={this.handleClear.bind(this)}>Clear</a>
+                            <a
+                                className="card-footer-item"
+                                onClick={this.handleClear.bind(this)}
+                            >
+                                Clear
+                            </a>
                             <p className="card-footer-item">
                                 <span>sign above</span>
                             </p>
-                            <a className="card-footer-item" onClick={this.handleSave.bind(this)}>Save</a>
+                            <a
+                                className="card-footer-item"
+                                onClick={this.handleSave.bind(this)}
+                            >
+                                Save
+                            </a>
                         </footer>
                     </div>
                 </div>

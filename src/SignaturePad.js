@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import SigPad from 'signature_pad';
 import debounce from 'throttle-debounce/debounce';
 
-class SignaturePad extends React.Component {
+class SignaturePad extends PureComponent {
 
     static displayName = 'react-signature-pad-wrapper';
 
@@ -24,7 +24,10 @@ class SignaturePad extends React.Component {
     constructor(props) {
         super(props);
 
-        this._callScrollHandler = debounce(this.props.debounceInterval, this.handleScroll.bind(this));
+        this._callResizeHandler = debounce(
+            this.props.debounceInterval,
+            this.handleResize.bind(this)
+        );
     }
 
     componentDidMount() {
@@ -34,7 +37,7 @@ class SignaturePad extends React.Component {
         this.scaleCanvas();
 
         if (!this.props.width || !this.props.height) {
-            window.addEventListener('resize', this._callScrollHandler);
+            window.addEventListener('resize', this._callResizeHandler);
         }
 
         this._signaturePad = new SigPad(this._canvas, this.props.options);
@@ -42,7 +45,7 @@ class SignaturePad extends React.Component {
 
     componentWillUnmount() {
         if (!this.props.width || !this.props.height) {
-            window.removeEventListener('resize', this._callScrollHandler);
+            window.removeEventListener('resize', this._callResizeHandler);
         }
 
         this._signaturePad.off();
@@ -163,7 +166,7 @@ class SignaturePad extends React.Component {
         this._signaturePad.on();
     }
 
-    handleScroll() {
+    handleResize() {
         this.scaleCanvas();
     }
 
@@ -191,8 +194,13 @@ class SignaturePad extends React.Component {
     }
 
     render() {
-        return <canvas className={this.props.className} ref={ref => this._canvas = ref} />;
+        return (
+            <canvas
+                className={this.props.className}
+                ref={ref => this._canvas = ref} />
+        );
     }
+
 }
 
 export default SignaturePad;

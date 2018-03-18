@@ -36,11 +36,11 @@
         "eslint": "^4.19.0",
         "eslint-plugin-import": "^2.9.0",
         "eslint-plugin-react": "^7.7.0",
-        "rollup": "^0.55.5",
+        "rollup": "^0.57.1",
         "rollup-plugin-babel": "^3.0.3",
-        "rollup-plugin-commonjs": "^8.4.1",
+        "rollup-plugin-commonjs": "^9.1.0",
         "rollup-plugin-eslint": "^4.0.0",
-        "rollup-plugin-node-resolve": "^3.2.0",
+        "rollup-plugin-node-resolve": "^3.3.0",
         "rollup-plugin-uglify": "^3.0.0"
     },
     "dependencies": {

@@ -41,6 +41,10 @@ class SignaturePad extends PureComponent {
         }
 
         this._signaturePad = new SigPad(this._canvas, this.props.options);
+
+        if (this.props.value) {
+          this._signaturePad.fromDataURL(this.props.value);
+        }
     }
 
     componentWillUnmount() {

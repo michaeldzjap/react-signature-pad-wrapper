@@ -1,6 +1,7 @@
 {
     "env": {
         "browser": true,
+        "node": true,
         "commonjs": true,
         "es6": true
     },
@@ -378,8 +379,5 @@
         // https://github.com/yannickcr/eslint-plugin-react
         "react/jsx-pascal-case": "error",
         "react/style-prop-object": "error"
-    },
-    "globals": {
-        "__dirname": false
     }
 }

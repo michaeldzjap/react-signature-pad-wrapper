@@ -29,8 +29,17 @@ export default {
     devtool: 'cheap-module-eval-source-map',
     optimization: {
         splitChunks: {
-            name: 'vendor',
-            minChunks: 2
+            cacheGroups: {
+                vendor: {
+                    chunks: 'initial',
+                    name: 'vendor',
+                    test: 'vendor',
+                    enforce: true
+                }
+            }
+        },
+        runtimeChunk: {
+            name: 'manifest'
         },
         noEmitOnErrors: true
     }

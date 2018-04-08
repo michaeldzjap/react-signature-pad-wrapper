@@ -38,8 +38,8 @@
         "canvas-prebuilt": "^1.6.5-prerelease.1",
         "enzyme": "^3.3.0",
         "enzyme-adapter-react-16": "^1.1.1",
-        "eslint": "^4.19.0",
-        "eslint-plugin-import": "^2.9.0",
+        "eslint": "^4.19.1",
+        "eslint-plugin-import": "^2.10.0",
         "eslint-plugin-jest": "^21.15.0",
         "eslint-plugin-react": "^7.7.0",
         "jest": "^22.4.3",
@@ -53,7 +53,7 @@
     },
     "dependencies": {
         "prop-types": "^15.6.1",
-        "react": "^16.2.0",
+        "react": "^16.3.1",
         "signature_pad": "^2.3.2",
         "throttle-debounce": "^1.0.1"
     },

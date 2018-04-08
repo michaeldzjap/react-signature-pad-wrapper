@@ -31,16 +31,18 @@ class SignaturePad extends PureComponent {
     }
 
     componentDidMount() {
-        if (!this.props.width || !this.props.height) {
-            this._canvas.style.width = '100%';
-        }
-        this.scaleCanvas();
+        if (this._canvas) {
+            if (!this.props.width || !this.props.height) {
+                this._canvas.style.width = '100%';
+            }
+            this.scaleCanvas();
 
-        if (!this.props.width || !this.props.height) {
-            window.addEventListener('resize', this._callResizeHandler);
-        }
+            if (!this.props.width || !this.props.height) {
+                window.addEventListener('resize', this._callResizeHandler);
+            }
 
-        this._signaturePad = new SigPad(this._canvas, this.props.options);
+            this._signaturePad = new SigPad(this._canvas, this.props.options);
+        }
     }
 
     componentWillUnmount() {

@@ -5,6 +5,7 @@
     "main": "dist/react-signature-pad-wrapper.min.js",
     "jsnext:main": "src/index.js",
     "scripts": {
+        "test": "jest",
         "build": "./node_modules/.bin/rollup --config",
         "watch": "./node_modules/.bin/rollup --config --watch",
         "lint": "./node_modules/.bin/eslint ./"
@@ -28,14 +29,21 @@
     "devDependencies": {
         "babel-core": "^6.26.0",
         "babel-eslint": "^8.2.2",
+        "babel-jest": "^22.4.3",
         "babel-plugin-external-helpers": "^6.22.0",
         "babel-preset-env": "^1.6.1",
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-0": "^6.24.1",
         "babel-register": "^6.26.0",
+        "canvas-prebuilt": "^1.6.5-prerelease.1",
+        "enzyme": "^3.3.0",
+        "enzyme-adapter-react-16": "^1.1.1",
         "eslint": "^4.19.0",
         "eslint-plugin-import": "^2.9.0",
+        "eslint-plugin-jest": "^21.15.0",
         "eslint-plugin-react": "^7.7.0",
+        "jest": "^22.4.3",
+        "react-dom": "^16.3.1",
         "rollup": "^0.57.1",
         "rollup-plugin-babel": "^3.0.3",
         "rollup-plugin-commonjs": "^9.1.0",
@@ -48,5 +56,17 @@
         "react": "^16.2.0",
         "signature_pad": "^2.3.2",
         "throttle-debounce": "^1.0.1"
+    },
+    "jest": {
+        "setupFiles": [
+            "<rootDir>/src/__tests__/shim.js",
+            "<rootDir>/src/__tests__/config.js"
+        ],
+        "testPathIgnorePatterns": [
+            "<rootDir>/src/__tests__/shim.js",
+            "<rootDir>/src/__tests__/config.js",
+            "<rootDir>/src/__tests__/helpers/",
+            "<rootDir>/node_modules/"
+        ]
     }
 }

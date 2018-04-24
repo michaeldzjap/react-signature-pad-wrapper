@@ -24,6 +24,11 @@ class SignaturePad extends PureComponent {
     constructor(props) {
         super(props);
 
+        this.state = {
+            canvasWidth: 0,
+            canvasHeight: 0
+        };
+        
         this._callResizeHandler = debounce(
             this.props.debounceInterval,
             this.handleResize.bind(this)
@@ -173,12 +178,13 @@ class SignaturePad extends PureComponent {
     }
 
     scaleCanvas() {
-        // Avoid needlessly setting height/width if dimensions haven't changed
-        if (this._canvas && this._canvas.offsetWidth === this.canvasWidth && this._canvas.offsetHeight === this.canvasHeight) return;
-        
         const ratio = Math.max(window.devicePixelRatio || 1, 1);
         const width = (this.props.width || this._canvas.offsetWidth) * ratio;
         const height = (this.props.height || this._canvas.offsetHeight) * ratio;
+        
+        // Avoid needlessly setting height/width if dimensions haven't changed
+        const { canvasWidth, canvasHeight } = this.state;
+        if (width === canvasWidth && height === canvasHeight) return;
 
         let data;
         if (this.props.redrawOnResize && this._signaturePad) {
@@ -187,8 +193,11 @@ class SignaturePad extends PureComponent {
 
         this._canvas.width = width;
         this._canvas.height = height;
-        this.canvasWidth = width;
-        this.canvasHeight = height;
+
+        this.setState({
+            canvasWidth: width,
+            canvasHeight: height
+        });
 
         const ctx = this._canvas.getContext('2d');
         ctx.scale(ratio, ratio);

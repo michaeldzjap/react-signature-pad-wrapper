@@ -183,7 +183,7 @@ class SignaturePad extends PureComponent {
         const height = (this.props.height || this._canvas.offsetHeight) * ratio;
         
         // Avoid needlessly setting height/width if dimensions haven't changed
-        const { canvasWidth, canvasHeight } = this.state;
+        const {canvasWidth, canvasHeight} = this.state;
         if (width === canvasWidth && height === canvasHeight) return;
 
         let data;

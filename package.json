@@ -35,7 +35,7 @@
         "babel-preset-react": "^6.24.1",
         "babel-preset-stage-0": "^6.24.1",
         "babel-register": "^6.26.0",
-        "canvas-prebuilt": "^2.0.0-alpha.11",
+        "canvas-prebuilt": "^2.0.0-alpha.2",
         "enzyme": "^3.3.0",
         "enzyme-adapter-react-16": "^1.1.1",
         "eslint": "^4.19.1",

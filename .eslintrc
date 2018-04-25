@@ -160,7 +160,7 @@
         "max-params": ["warn", 3],
         "max-statements": [
             "warn",
-            10,
+            20,
             {"ignoreTopLevelFunctions": true}
         ],
         "multiline-ternary": ["error", "always-multiline"],

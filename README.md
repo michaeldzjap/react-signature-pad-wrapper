@@ -1,5 +1,8 @@
-![downloads](https://img.shields.io/npm/dt/react-signature-pad-wrapper.svg) [![Build Status](https://travis-ci.org/michaeldzjap/react-signature-pad-wrapper.svg?branch=master)](https://travis-ci.org/michaeldzjap/react-signature-pad-wrapper) ![dependencies](https://img.shields.io/david/michaeldzjap/react-signature-pad-wrapper.svg)
+![NPM Version](https://img.shields.io/npm/v/react-signature-pad-wrapper.svg?branch=master)
+![downloads](https://img.shields.io/npm/dt/react-signature-pad-wrapper.svg)
+[![Build Status](https://travis-ci.org/michaeldzjap/react-signature-pad-wrapper.svg?branch=master)](https://travis-ci.org/michaeldzjap/react-signature-pad-wrapper) ![dependencies](https://img.shields.io/david/michaeldzjap/react-signature-pad-wrapper.svg)
 ![dev dependencies](https://img.shields.io/david/dev/michaeldzjap/react-signature-pad-wrapper.svg)
+[![License](https://img.shields.io/npm/l/react-signature-pad-wrapper.svg)](https://github.com/michaeldzjap/react-signature-pad-wrapper/blob/master/LICENSE)
 
 # react-signature-pad-wrapper
 A React wrapper for [signature pad](https://github.com/szimek/signature_pad).

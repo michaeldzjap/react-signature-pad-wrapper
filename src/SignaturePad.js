@@ -10,10 +10,10 @@ class SignaturePad extends PureComponent {
     static propTypes = {
         width: PropTypes.number,
         height: PropTypes.number,
-        className: PropTypes.string,
         options: PropTypes.object,
         redrawOnResize: PropTypes.bool.isRequired,
-        debounceInterval: PropTypes.number.isRequired
+        debounceInterval: PropTypes.number.isRequired,
+        canvasProps: PropTypes.object
     }
 
     static defaultProps = {
@@ -204,10 +204,12 @@ class SignaturePad extends PureComponent {
     }
 
     render() {
+        const {canvasProps} = this.props;
+
         return (
             <canvas
-                className={this.props.className}
-                ref={ref => this._canvas = ref} />
+                ref={ref => this._canvas = ref}
+                {...canvasProps} />
         );
     }
 

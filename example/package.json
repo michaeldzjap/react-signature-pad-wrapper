@@ -23,7 +23,7 @@
     },
     "homepage": "https://github.com/michaeldzjap/react-signature-pad-wrapper#readme",
     "dependencies": {
-        "bulma": "^0.6.2",
+        "bulma": "^0.7.1",
         "prop-types": "^15.6.1",
         "react": "^16.3.2",
         "react-dom": "^16.3.2"

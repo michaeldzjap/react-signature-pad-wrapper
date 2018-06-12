@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import SigPad from 'signature_pad';
-import debounce from 'throttle-debounce/debounce';
+import {debounce} from 'throttle-debounce';
 
 class SignaturePad extends PureComponent {
 

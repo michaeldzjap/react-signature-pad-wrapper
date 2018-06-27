@@ -13,10 +13,9 @@
     ],
     "parser": "babel-eslint",
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 2018,
         "sourceType": "module",
         "ecmaFeatures": {
-            "experimentalObjectRestSpread": true,
             "jsx": true
         }
     },
@@ -120,7 +119,7 @@
         "jsx-quotes": ["error", "prefer-double"],
         "key-spacing": [
             "error",
-            {"beforeColon": false, "mode": "strict", }
+            {"beforeColon": false, "mode": "strict"}
         ],
         "keyword-spacing": [
             "error",
@@ -145,12 +144,12 @@
         "lines-between-class-members": [
             "error",
             "always",
-            {exceptAfterSingleLine: true}
+            {"exceptAfterSingleLine": true}
         ],
         "max-depth": ["warn", 2],
         "max-len": [
             "warn",
-            {"code": 80, "comments": 80, "ignoreUrls": true},
+            {"code": 80, "comments": 80, "ignoreUrls": true}
         ],
         "max-lines": [
             "warn",
@@ -306,12 +305,14 @@
         "require-await": "error",
         "require-jsdoc": [
             "warn",
-            "require": {
-                "FunctionDeclaration": true,
-                "MethodDefinition": false,
-                "ClassDeclaration": false,
-                "ArrowFunctionExpression": true,
-                "FunctionExpression": false
+            {
+                "require": {
+                    "FunctionDeclaration": true,
+                    "MethodDefinition": false,
+                    "ClassDeclaration": false,
+                    "ArrowFunctionExpression": true,
+                    "FunctionExpression": false
+                }
             }
         ],
         "semi": ["error", "always"],
@@ -365,7 +366,7 @@
                 "matchDescription": ".+",
                 "requireParamDescription": false,
                 "requireReturnDescription": false
-            },
+            }
         ],
         "vars-on-top": "warn",
         "wrap-iife": [
@@ -374,12 +375,10 @@
         ],
         "yield-star-spacing": "error",
 
-        // https://github.com/benmosher/eslint-plugin-import
         "import/first": "error",
         "import/no-amd": "error",
         "import/no-webpack-loader-syntax": "error",
 
-        // https://github.com/yannickcr/eslint-plugin-react
         "react/jsx-pascal-case": "error",
         "react/style-prop-object": "error"
     }

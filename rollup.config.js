@@ -1,7 +1,7 @@
 import commonjs from 'rollup-plugin-commonjs';
 import resolve from 'rollup-plugin-node-resolve';
 import babel from 'rollup-plugin-babel';
-import eslint from 'rollup-plugin-eslint';
+import {eslint} from 'rollup-plugin-eslint';
 import {uglify} from 'rollup-plugin-uglify';
 
 export default [

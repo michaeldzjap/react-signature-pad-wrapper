@@ -18,6 +18,9 @@ export default {
                 exclude: path.resolve(__dirname, 'node_modules'),
                 loader: 'babel-loader',
                 options: {
+                    babelrc: false,
+                    presets: ['@babel/preset-env', '@babel/preset-react'],
+                    plugins: ['@babel/plugin-proposal-class-properties'],
                     cacheDirectory: true
                 }
             }

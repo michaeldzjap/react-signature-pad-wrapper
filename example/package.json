@@ -5,8 +5,8 @@
     "main": "dist/app.js",
     "jsnext:main": "app.js",
     "scripts": {
-        "build": "node -r babel-register ./node_modules/.bin/webpack --progress --hide-modules",
-        "watch": "node -r babel-register ./node_modules/.bin/webpack --watch --progress --hide-modules"
+        "build": "node -r @babel/register ./node_modules/.bin/webpack --progress --hide-modules",
+        "watch": "node -r @babel/register ./node_modules/.bin/webpack --watch --progress --hide-modules"
     },
     "repository": {
         "type": "git",
@@ -23,22 +23,23 @@
     },
     "homepage": "https://github.com/michaeldzjap/react-signature-pad-wrapper#readme",
     "dependencies": {
+        "@babel/runtime": "^7.0.0",
         "bulma": "^0.7.1",
         "prop-types": "^15.6.2",
         "react": "^16.4.2",
         "react-dom": "^16.4.2"
     },
     "devDependencies": {
-        "babel-core": "^6.26.3",
-        "babel-eslint": "^8.2.6",
-        "babel-loader": "^7.1.5",
-        "babel-preset-env": "^1.7.0",
-        "babel-preset-react": "^6.24.1",
-        "babel-preset-stage-0": "^6.24.1",
-        "babel-register": "^6.26.0",
-        "eslint": "^5.3.0",
-        "eslint-plugin-react": "^7.10.0",
-        "webpack": "^4.16.5",
+        "@babel/core": "^7.0.0",
+        "@babel/plugin-proposal-class-properties": "^7.0.0",
+        "@babel/preset-env": "^7.0.0",
+        "@babel/preset-react": "^7.0.0",
+        "@babel/register": "^7.0.0",
+        "babel-eslint": "^9.0.0",
+        "babel-loader": "^8.0.0",
+        "eslint": "^5.4.0",
+        "eslint-plugin-react": "^7.11.1",
+        "webpack": "^4.17.1",
         "webpack-cli": "^3.1.0"
     }
 }

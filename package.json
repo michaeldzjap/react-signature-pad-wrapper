@@ -26,19 +26,19 @@
         "react": "^15.5.0 || ^16.0.0"
     },
     "devDependencies": {
-        "@babel/core": "^7.1.0",
+        "@babel/core": "^7.1.2",
         "@babel/plugin-external-helpers": "^7.0.0",
         "@babel/plugin-proposal-class-properties": "^7.1.0",
         "@babel/plugin-transform-runtime": "^7.1.0",
         "@babel/preset-env": "^7.1.0",
         "@babel/preset-react": "^7.0.0",
         "babel-core": "^7.0.0-bridge.0",
-        "babel-eslint": "^10.0.0",
+        "babel-eslint": "^10.0.1",
         "babel-jest": "^23.6.0",
         "canvas-prebuilt": "^1.6.11",
         "enzyme": "^3.6.0",
         "enzyme-adapter-react-16": "^1.5.0",
-        "eslint": "^5.6.0",
+        "eslint": "^5.6.1",
         "eslint-plugin-import": "^2.14.0",
         "eslint-plugin-jest": "^21.22.1",
         "eslint-plugin-react": "^7.11.1",
@@ -52,7 +52,7 @@
         "rollup-plugin-uglify": "^6.0.0"
     },
     "dependencies": {
-        "@babel/runtime": "^7.0.0",
+        "@babel/runtime": "^7.1.2",
         "prop-types": "^15.6.2",
         "react": "^16.5.2",
         "signature_pad": "^2.3.2",

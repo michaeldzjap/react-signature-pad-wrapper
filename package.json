@@ -26,11 +26,11 @@
         "react": "^15.5.0 || ^16.0.0"
     },
     "devDependencies": {
-        "@babel/core": "^7.1.2",
+        "@babel/core": "^7.1.5",
         "@babel/plugin-external-helpers": "^7.0.0",
         "@babel/plugin-proposal-class-properties": "^7.1.0",
         "@babel/plugin-transform-runtime": "^7.1.0",
-        "@babel/preset-env": "^7.1.0",
+        "@babel/preset-env": "^7.1.5",
         "@babel/preset-react": "^7.0.0",
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "^10.0.1",
@@ -40,10 +40,10 @@
         "enzyme-adapter-react-16": "^1.6.0",
         "eslint": "^5.8.0",
         "eslint-plugin-import": "^2.14.0",
-        "eslint-plugin-jest": "^21.27.1",
+        "eslint-plugin-jest": "^21.27.2",
         "eslint-plugin-react": "^7.11.1",
         "jest": "^23.6.0",
-        "react-dom": "^16.6.0",
+        "react-dom": "^16.6.1",
         "rollup": "^0.67.0",
         "rollup-plugin-babel": "^4.0.3",
         "rollup-plugin-commonjs": "^9.2.0",
@@ -52,9 +52,9 @@
         "rollup-plugin-uglify": "^6.0.0"
     },
     "dependencies": {
-        "@babel/runtime": "^7.1.2",
+        "@babel/runtime": "^7.1.5",
         "prop-types": "^15.6.2",
-        "react": "^16.6.0",
+        "react": "^16.6.1",
         "signature_pad": "^2.3.2",
         "throttle-debounce": "^2.0.1"
     },

@@ -36,8 +36,8 @@
         "babel-eslint": "^10.0.1",
         "babel-jest": "^23.6.0",
         "canvas": "^2.2.0",
-        "enzyme": "^3.7.0",
-        "enzyme-adapter-react-16": "^1.7.0",
+        "enzyme": "^3.8.0",
+        "enzyme-adapter-react-16": "^1.7.1",
         "eslint": "^5.10.0",
         "eslint-plugin-import": "^2.14.0",
         "eslint-plugin-jest": "^22.1.2",
@@ -48,7 +48,7 @@
         "rollup-plugin-babel": "^4.0.3",
         "rollup-plugin-commonjs": "^9.2.0",
         "rollup-plugin-eslint": "^5.0.0",
-        "rollup-plugin-node-resolve": "^3.4.0",
+        "rollup-plugin-node-resolve": "^4.0.0",
         "rollup-plugin-uglify": "^6.0.0"
     },
     "dependencies": {

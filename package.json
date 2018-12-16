@@ -26,7 +26,7 @@
         "react": "^15.5.0 || ^16.0.0"
     },
     "devDependencies": {
-        "@babel/core": "^7.2.0",
+        "@babel/core": "^7.2.2",
         "@babel/plugin-external-helpers": "^7.2.0",
         "@babel/plugin-proposal-class-properties": "^7.2.1",
         "@babel/plugin-transform-runtime": "^7.2.0",
@@ -44,8 +44,8 @@
         "eslint-plugin-react": "^7.11.1",
         "jest": "^23.6.0",
         "react-dom": "^16.6.3",
-        "rollup": "^0.67.4",
-        "rollup-plugin-babel": "^4.0.3",
+        "rollup": "^0.68.0",
+        "rollup-plugin-babel": "^4.1.0",
         "rollup-plugin-commonjs": "^9.2.0",
         "rollup-plugin-eslint": "^5.0.0",
         "rollup-plugin-node-resolve": "^4.0.0",

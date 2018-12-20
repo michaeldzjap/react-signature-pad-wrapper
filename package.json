@@ -14,7 +14,7 @@
         "signature_pad"
     ],
     "author": "Michael Dzjaparidze",
-    "license": "ISC",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/michaeldzjap/react-signature-pad-wrapper.git"

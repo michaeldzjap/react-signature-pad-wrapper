@@ -3,6 +3,8 @@
 [![Build Status](https://travis-ci.org/michaeldzjap/react-signature-pad-wrapper.svg?branch=master)](https://travis-ci.org/michaeldzjap/react-signature-pad-wrapper)
 ![dependencies](https://img.shields.io/david/michaeldzjap/react-signature-pad-wrapper.svg)
 ![dev dependencies](https://img.shields.io/david/dev/michaeldzjap/react-signature-pad-wrapper.svg)
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![codecov](https://codecov.io/gh/michaeldzjap/react-signature-pad-wrapper/branch/master/graph/badge.svg)](https://codecov.io/gh/michaeldzjap/react-signature-pad-wrapper)
 [![License](https://img.shields.io/npm/l/react-signature-pad-wrapper.svg)](https://github.com/michaeldzjap/react-signature-pad-wrapper/blob/master/LICENSE)
 
 # react-signature-pad-wrapper

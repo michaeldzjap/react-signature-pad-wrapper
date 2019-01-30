@@ -3,7 +3,7 @@ import {mount} from 'enzyme';
 
 import './helpers/resizeWindow';
 import signature from './helpers/signature';
-import SignaturePad from '../SignaturePad';
+import SignaturePad from '../src/SignaturePad';
 
 describe('Component', () => {
     describe('SignaturePad', () => {

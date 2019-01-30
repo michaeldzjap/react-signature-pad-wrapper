@@ -1,2 +1,6 @@
+__tests__
 example
-src/__tests__
+src
+.eslintignore
+.eslintrc.json
+.gitignore

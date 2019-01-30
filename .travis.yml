@@ -1,9 +1,16 @@
 language: node_js
 node_js:
     - "node"
+env:
+    - CODECOV_TOKEN="88b89344-8051-4bc1-aa42-f6428b99355b"
 cache:
     directories:
         - node_modules
-script:
+before_install:
+    - pip install --user codecov
+before_script:
     - npm run lint
+script:
     - npm test
+after_success:
+    - codecov --file coverage/lcov.info --disable search

@@ -17,10 +17,6 @@ This package is available through npm:
 ```
 npm install --save react-signature-pad-wrapper
 ```
-In addition to *React* you will need to install the [prop-types](https://github.com/facebook/prop-types) package:
-```
-npm install --save prop-types
-```
 
 ## Usage
 This package implements exactly the same interface as the original *signature_pad* package and adds a couple of extra features that make responsive behaviour a little easier to deal with. For a complete overview of the available options and callables see the documentation for [signature pad](https://github.com/szimek/signature_pad).

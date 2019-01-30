@@ -2,7 +2,8 @@
     "name": "react-signature-pad-wrapper",
     "version": "1.2.3",
     "description": "A React component wrapper for signature_pad",
-    "main": "dist/react-signature-pad-wrapper.min.js",
+    "main": "dist/react-signature-pad-wrapper.js",
+    "module": "dist/react-signature-pad-wrapper.es.js",
     "files": [
         "dist"
     ],
@@ -10,7 +11,8 @@
         "test": "jest",
         "build": "./node_modules/.bin/rollup --config",
         "watch": "./node_modules/.bin/rollup --config --watch",
-        "lint": "./node_modules/.bin/eslint ./"
+        "lint": "./node_modules/.bin/eslint ./",
+        "clean": "rm -rf dist"
     },
     "keywords": [
         "react",
@@ -52,6 +54,8 @@
         "rollup-plugin-commonjs": "^9.2.0",
         "rollup-plugin-eslint": "^5.0.0",
         "rollup-plugin-node-resolve": "^4.0.0",
+        "rollup-plugin-sourcemaps": "^0.4.2",
+        "rollup-plugin-terser": "^4.0.3",
         "rollup-plugin-uglify": "^6.0.2"
     },
     "dependencies": {

@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react';
 
-import SignaturePad from '../src';
+import SignaturePad from '../dist/react-signature-pad-wrapper';
 
 class Layout extends PureComponent {
 

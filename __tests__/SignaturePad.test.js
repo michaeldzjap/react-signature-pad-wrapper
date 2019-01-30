@@ -31,5 +31,17 @@ describe('Component', () => {
             instance.clear();
             expect(instance.isEmpty()).toBeTruthy();
         });
+
+        it('fails to assign an invalid value to the onBegin option', () => {
+            const fn = () => instance.onBegin = 100;
+
+            expect(fn).toThrow('Invalid argument passed to onBegin()');
+        });
+
+        it('fails to assign an invalid value to the onEnd option', () => {
+            const fn = () => instance.onEnd = 'a';
+
+            expect(fn).toThrow('Invalid argument passed to onEnd()');
+        });
     });
 });

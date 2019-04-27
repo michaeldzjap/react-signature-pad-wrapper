@@ -31,11 +31,11 @@
         "react": "^15.5.0 || ^16.0.0"
     },
     "devDependencies": {
-        "@babel/core": "^7.4.3",
+        "@babel/core": "^7.4.4",
         "@babel/plugin-external-helpers": "^7.2.0",
-        "@babel/plugin-proposal-class-properties": "^7.4.0",
-        "@babel/plugin-transform-runtime": "^7.4.3",
-        "@babel/preset-env": "^7.4.3",
+        "@babel/plugin-proposal-class-properties": "^7.4.4",
+        "@babel/plugin-transform-runtime": "^7.4.4",
+        "@babel/preset-env": "^7.4.4",
         "@babel/preset-react": "^7.0.0",
         "babel-core": "^7.0.0-bridge.0",
         "babel-eslint": "^10.0.1",
@@ -45,7 +45,7 @@
         "enzyme-adapter-react-16": "^1.12.1",
         "eslint": "^5.16.0",
         "eslint-plugin-import": "^2.17.2",
-        "eslint-plugin-jest": "^22.4.1",
+        "eslint-plugin-jest": "^22.5.1",
         "eslint-plugin-react": "^7.12.4",
         "jest": "^24.7.1",
         "react-dom": "^16.8.6",
@@ -59,7 +59,7 @@
         "rollup-plugin-uglify": "^6.0.2"
     },
     "dependencies": {
-        "@babel/runtime": "^7.4.3",
+        "@babel/runtime": "^7.4.4",
         "prop-types": "^15.7.2",
         "react": "^16.8.6",
         "signature_pad": "^2.3.2",

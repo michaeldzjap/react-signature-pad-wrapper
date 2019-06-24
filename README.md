@@ -5,6 +5,7 @@
 ![dev dependencies](https://img.shields.io/david/dev/michaeldzjap/react-signature-pad-wrapper.svg)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![codecov](https://codecov.io/gh/michaeldzjap/react-signature-pad-wrapper/branch/master/graph/badge.svg)](https://codecov.io/gh/michaeldzjap/react-signature-pad-wrapper)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=michaeldzjap_react-signature-pad-wrapper&metric=alert_status)](https://sonarcloud.io/dashboard?id=michaeldzjap_react-signature-pad-wrapper)
 [![License](https://img.shields.io/npm/l/react-signature-pad-wrapper.svg)](https://github.com/michaeldzjap/react-signature-pad-wrapper/blob/master/LICENSE)
 
 # react-signature-pad-wrapper

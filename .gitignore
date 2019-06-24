@@ -1,3 +1,5 @@
+/.idea
+/.scannerwork
 /node_modules
 /coverage
 /dist

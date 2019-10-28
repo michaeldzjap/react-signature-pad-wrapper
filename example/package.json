@@ -24,9 +24,9 @@
     "homepage": "https://github.com/michaeldzjap/react-signature-pad-wrapper#readme",
     "dependencies": {
         "@babel/runtime": "^7.6.3",
-        "bulma": "^0.7.5",
-        "react": "^16.10.2",
-        "react-dom": "^16.10.2"
+        "bulma": "^0.8.0",
+        "react": "^16.11.0",
+        "react-dom": "^16.11.0"
     },
     "devDependencies": {
         "@babel/core": "^7.6.4",
@@ -36,7 +36,7 @@
         "@babel/register": "^7.6.2",
         "babel-eslint": "^10.0.3",
         "babel-loader": "^8.0.6",
-        "eslint": "^6.5.1",
+        "eslint": "^6.6.0",
         "eslint-plugin-react": "^7.16.0",
         "webpack": "^4.41.2",
         "webpack-cli": "^3.3.9"

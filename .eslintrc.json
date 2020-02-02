@@ -11,6 +11,11 @@
         "plugin:react/recommended",
         "plugin:jest/recommended"
     ],
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "parser": "babel-eslint",
     "parserOptions": {
         "ecmaVersion": 2018,

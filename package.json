@@ -1,80 +1,67 @@
 {
-    "name": "react-signature-pad-wrapper",
-    "version": "1.2.10",
-    "description": "A React component wrapper for signature_pad",
-    "main": "dist/react-signature-pad-wrapper.js",
-    "module": "dist/react-signature-pad-wrapper.es.js",
-    "files": [
-        "dist"
-    ],
-    "scripts": {
-        "test": "jest",
-        "build": "./node_modules/.bin/rollup --config",
-        "watch": "./node_modules/.bin/rollup --config --watch",
-        "lint": "./node_modules/.bin/eslint ./",
-        "clean": "rm -rf dist"
-    },
-    "keywords": [
-        "react",
-        "signature_pad"
-    ],
-    "author": "Michael Dzjaparidze",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/michaeldzjap/react-signature-pad-wrapper.git"
-    },
-    "bugs": {
-        "url": "https://github.com/michaeldzjap/react-signature-pad-wrapper/issues"
-    },
-    "peerDependencies": {
-        "react": "^15.5.0 || ^16.0.0"
-    },
-    "devDependencies": {
-        "@babel/core": "^7.9.6",
-        "@babel/plugin-external-helpers": "^7.8.3",
-        "@babel/plugin-proposal-class-properties": "^7.8.3",
-        "@babel/plugin-transform-runtime": "^7.9.6",
-        "@babel/preset-env": "^7.9.6",
-        "@babel/preset-react": "^7.9.4",
-        "babel-eslint": "^10.1.0",
-        "babel-jest": "^26.0.1",
-        "canvas": "^2.6.1",
-        "enzyme": "^3.11.0",
-        "enzyme-adapter-react-16": "^1.15.2",
-        "eslint": "^7.0.0",
-        "eslint-plugin-import": "^2.20.2",
-        "eslint-plugin-jest": "^23.13.1",
-        "eslint-plugin-react": "^7.20.0",
-        "jest": "^26.0.1",
-        "react-dom": "^16.13.1",
-        "rollup": "^2.10.5",
-        "rollup-plugin-babel": "^4.4.0",
-        "rollup-plugin-commonjs": "^10.1.0",
-        "rollup-plugin-eslint": "^7.0.0",
-        "rollup-plugin-node-resolve": "^5.2.0",
-        "rollup-plugin-sourcemaps": "^0.6.2",
-        "rollup-plugin-terser": "^5.3.0",
-        "rollup-plugin-uglify": "^6.0.4"
-    },
-    "dependencies": {
-        "@babel/runtime": "^7.9.6",
-        "prop-types": "^15.7.2",
-        "react": "^16.13.1",
-        "signature_pad": "^2.3.2",
-        "throttle-debounce": "^2.1.0"
-    },
-    "jest": {
-        "setupFiles": [
-            "<rootDir>/__tests__/shim.js",
-            "<rootDir>/__tests__/config.js"
-        ],
-        "testPathIgnorePatterns": [
-            "<rootDir>/__tests__/shim.js",
-            "<rootDir>/__tests__/config.js",
-            "<rootDir>/__tests__/helpers/",
-            "<rootDir>/node_modules/"
-        ],
-        "collectCoverage": true
-    }
+  "name": "react-signature-pad-wrapper",
+  "version": "1.2.10",
+  "description": "A React component wrapper for signature_pad",
+  "main": "dist/react-signature-pad-wrapper.js",
+  "module": "dist/react-signature-pad-wrapper.es.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "jest",
+    "build": "./node_modules/.bin/rollup --config",
+    "watch": "./node_modules/.bin/rollup --config --watch",
+    "lint": "./node_modules/.bin/eslint ./",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "react",
+    "signature_pad"
+  ],
+  "author": "Michael Dzjaparidze",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaeldzjap/react-signature-pad-wrapper.git"
+  },
+  "bugs": {
+    "url": "https://github.com/michaeldzjap/react-signature-pad-wrapper/issues"
+  },
+  "peerDependencies": {
+    "react": "^15.5.0 || ^16.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.6",
+    "@babel/plugin-external-helpers": "^7.8.3",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/plugin-transform-runtime": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/preset-react": "^7.9.4",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.0.1",
+    "canvas": "^2.6.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "eslint": "^7.0.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jest": "^23.13.1",
+    "eslint-plugin-react": "^7.20.0",
+    "jest": "^26.0.1",
+    "react-dom": "^16.13.1",
+    "rollup": "^2.10.5",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-sourcemaps": "^0.6.2",
+    "rollup-plugin-terser": "^5.3.0",
+    "rollup-plugin-uglify": "^6.0.4"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.9.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "signature_pad": "^2.3.2",
+    "throttle-debounce": "^2.1.0"
+  }
 }

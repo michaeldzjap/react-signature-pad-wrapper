@@ -15,7 +15,7 @@ const base = {
         ...Object.keys(pkg.peerDependencies || {}),
     ],
     watch: {
-        include: 'src/**'
+        include: 'src/**',
     },
     plugins: [
         eslint(),
@@ -26,27 +26,37 @@ const base = {
                 '@babel/plugin-transform-runtime',
                 '@babel/plugin-proposal-class-properties',
             ],
-            runtimeHelpers: true
+            runtimeHelpers: true,
         }),
         commonjs(),
         resolve(),
-        sourceMaps()
-    ]
+        sourceMaps(),
+    ],
 };
 
 export default [
     {
         ...base,
         ...{
-            output: {file: pkg.main, format: 'cjs', sourcemap: true},
-            plugins: [...base.plugins, uglify()]
-        }
+            output: {
+                file: pkg.main,
+                format: 'cjs',
+                sourcemap: true,
+                exports: 'default',
+            },
+            plugins: [...base.plugins, uglify()],
+        },
     },
     {
         ...base,
         ...{
-            output: {file: pkg.module, format: 'es', sourcemap: true},
-            plugins: [...base.plugins, terser()]
-        }
-    }
+            output: {
+                file: pkg.module,
+                format: 'es',
+                sourcemap: true,
+                exports: 'default',
+            },
+            plugins: [...base.plugins, terser()],
+        },
+    },
 ];

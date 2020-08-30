@@ -1,10 +1,9 @@
-import commonjs from 'rollup-plugin-commonjs';
-import resolve from 'rollup-plugin-node-resolve';
-import babel from 'rollup-plugin-babel';
-import sourceMaps from 'rollup-plugin-sourcemaps';
+import babel from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
 import {eslint} from 'rollup-plugin-eslint';
-import {uglify} from 'rollup-plugin-uglify';
+import {nodeResolve} from '@rollup/plugin-node-resolve';
 import {terser} from 'rollup-plugin-terser';
+import {uglify} from 'rollup-plugin-uglify';
 
 import pkg from './package.json';
 
@@ -21,16 +20,12 @@ const base = {
         eslint(),
         babel({
             exclude: 'node_modules/**',
-            plugins: [
-                '@babel/plugin-external-helpers',
-                '@babel/plugin-transform-runtime',
-                '@babel/plugin-proposal-class-properties',
-            ],
-            runtimeHelpers: true,
+            babelHelpers: 'runtime',
+            inputSourceMap: true,
+            sourceMaps: true,
         }),
         commonjs(),
-        resolve(),
-        sourceMaps(),
+        nodeResolve(),
     ],
 };
 

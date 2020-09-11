@@ -4,12 +4,12 @@ export default {
     mode: 'development',
     entry: {
         bundle: './app',
-        vendor: ['react', 'react-dom', 'prop-types']
+        vendor: ['react', 'react-dom', 'prop-types'],
     },
     output: {
         filename: '[name].js',
         path: path.resolve(__dirname, 'dist'),
-        devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]'
+        devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]',
     },
     module: {
         rules: [
@@ -21,13 +21,13 @@ export default {
                     babelrc: false,
                     presets: ['@babel/preset-env', '@babel/preset-react'],
                     plugins: ['@babel/plugin-proposal-class-properties'],
-                    cacheDirectory: true
-                }
-            }
-        ]
+                    cacheDirectory: true,
+                },
+            },
+        ],
     },
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx'],
     },
     devtool: 'cheap-module-eval-source-map',
     optimization: {
@@ -37,13 +37,13 @@ export default {
                     chunks: 'initial',
                     name: 'vendor',
                     test: 'vendor',
-                    enforce: true
-                }
-            }
+                    enforce: true,
+                },
+            },
         },
         runtimeChunk: {
-            name: 'manifest'
+            name: 'manifest',
         },
-        noEmitOnErrors: true
-    }
+        noEmitOnErrors: true,
+    },
 };

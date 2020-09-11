@@ -1,13 +1,27 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 
 import SignaturePad from '../dist/react-signature-pad-wrapper';
 
+/**
+ * @class
+ * @classdesc Layout component.
+ * @extends {PureComponent}
+ */
 class Layout extends PureComponent {
-
+    /**
+     * Clear the signature pad.
+     *
+     * @return {void}
+     */
     handleClear() {
         this.signaturePad.instance.clear();
     }
 
+    /**
+     * Save a signature.
+     *
+     * @return {void}
+     */
     handleSave() {
         if (this.signaturePad.isEmpty()) {
             // eslint-disable-next-line no-alert
@@ -17,6 +31,11 @@ class Layout extends PureComponent {
         }
     }
 
+    /**
+     * Render the title.
+     *
+     * @return {ReactElement}
+     */
     renderTitle() {
         return (
             <div className="columns">
@@ -28,6 +47,11 @@ class Layout extends PureComponent {
         );
     }
 
+    /**
+     * Render the signature pad.
+     *
+     * @return {ReactElement}
+     */
     renderSignaturePad() {
         return (
             <div className="columns">
@@ -35,25 +59,17 @@ class Layout extends PureComponent {
                     <div className="card">
                         <div className="card-content">
                             <div className="content">
-                                <SignaturePad
-                                    redrawOnResize={true}
-                                    ref={ref => this.signaturePad = ref} />
+                                <SignaturePad redrawOnResize={true} ref={(ref) => (this.signaturePad = ref)} />
                             </div>
                         </div>
                         <footer className="card-footer">
-                            <a
-                                className="card-footer-item"
-                                onClick={this.handleClear.bind(this)}
-                            >
+                            <a className="card-footer-item" onClick={this.handleClear.bind(this)}>
                                 Clear
                             </a>
                             <p className="card-footer-item">
                                 <span>sign above</span>
                             </p>
-                            <a
-                                className="card-footer-item"
-                                onClick={this.handleSave.bind(this)}
-                            >
+                            <a className="card-footer-item" onClick={this.handleSave.bind(this)}>
                                 Save
                             </a>
                         </footer>
@@ -63,6 +79,11 @@ class Layout extends PureComponent {
         );
     }
 
+    /**
+     * Render the layout component.
+     *
+     * @return {ReactElement}
+     */
     render() {
         return (
             <section className="section">
@@ -73,7 +94,6 @@ class Layout extends PureComponent {
             </section>
         );
     }
-
 }
 
 export default Layout;

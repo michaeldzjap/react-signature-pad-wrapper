@@ -1,8 +1,5 @@
 module.exports = {
-    setupFiles: [
-        '<rootDir>/__tests__/shim.js',
-        '<rootDir>/__tests__/config.js',
-    ],
+    setupFiles: ['<rootDir>/__tests__/shim.js', '<rootDir>/__tests__/config.js'],
     testPathIgnorePatterns: [
         '<rootDir>/__tests__/shim.js',
         '<rootDir>/__tests__/config.js',

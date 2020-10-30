@@ -1,5 +1,5 @@
 import React from 'react';
-import {mount} from 'enzyme';
+import { mount } from 'enzyme';
 
 import './helpers/resizeWindow';
 import signature from './helpers/signature';
@@ -33,13 +33,15 @@ describe('Component', () => {
         });
 
         it('fails to assign an invalid value to the onBegin option', () => {
-            const fn = () => instance.onBegin = 100;
+            // eslint-disable-next-line require-jsdoc
+            const fn = () => (instance.onBegin = 100);
 
             expect(fn).toThrow('Invalid argument passed to onBegin()');
         });
 
         it('fails to assign an invalid value to the onEnd option', () => {
-            const fn = () => instance.onEnd = 'a';
+            // eslint-disable-next-line require-jsdoc
+            const fn = () => (instance.onEnd = 'a');
 
             expect(fn).toThrow('Invalid argument passed to onEnd()');
         });

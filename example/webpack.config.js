@@ -29,7 +29,7 @@ export default {
     resolve: {
         extensions: ['.js', '.jsx'],
     },
-    devtool: 'cheap-module-eval-source-map',
+    devtool: 'eval-cheap-module-source-map',
     optimization: {
         splitChunks: {
             cacheGroups: {
@@ -44,6 +44,6 @@ export default {
         runtimeChunk: {
             name: 'manifest',
         },
-        noEmitOnErrors: true,
+        emitOnErrors: false,
     },
 };

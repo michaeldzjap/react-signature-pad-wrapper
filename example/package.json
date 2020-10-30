@@ -5,8 +5,8 @@
   "main": "dist/app.js",
   "jsnext:main": "app.js",
   "scripts": {
-    "build": "node -r @babel/register ./node_modules/.bin/webpack --progress --hide-modules",
-    "watch": "node -r @babel/register ./node_modules/.bin/webpack --watch --progress --hide-modules"
+    "build": "node -r @babel/register ./node_modules/.bin/webpack --progress",
+    "watch": "npm run build -- --watch"
   },
   "repository": {
     "type": "git",
@@ -25,8 +25,8 @@
   "dependencies": {
     "@babel/runtime": "^7.11.2",
     "bulma": "^0.9.0",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
@@ -38,7 +38,7 @@
     "babel-loader": "^8.1.0",
     "eslint": "^7.8.1",
     "eslint-plugin-react": "^7.20.6",
-    "webpack": "^4.44.1",
-    "webpack-cli": "^3.3.12"
+    "webpack": "^5.3.2",
+    "webpack-cli": "^4.1.0"
   }
 }

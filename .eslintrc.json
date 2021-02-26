@@ -29,8 +29,7 @@
     "plugin:react/recommended",
     "plugin:jest/recommended",
     "plugin:eslint-comments/recommended",
-    "plugin:prettier/recommended",
-    "prettier/standard"
+    "plugin:prettier/recommended"
   ],
   "rules": {
     "prettier/prettier": "error",

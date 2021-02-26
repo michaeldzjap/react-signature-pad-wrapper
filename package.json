@@ -69,7 +69,7 @@
     "rollup": "^2.26.11",
     "rollup-plugin-eslint": "^7.0.0",
     "rollup-plugin-terser": "^7.0.2",
-    "rollup-plugin-uglify": "^6.0.4"
+    "rollup-plugin-uglify": "^5.0.2"
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",

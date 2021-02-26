@@ -75,13 +75,5 @@
     "@babel/runtime": "^7.11.2",
     "signature_pad": "^2.3.2",
     "throttle-debounce": "^3.0.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.js": "eslint --cache --fix"
   }
 }

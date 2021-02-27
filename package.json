@@ -75,5 +75,8 @@
     "@babel/runtime": "^7.11.2",
     "signature_pad": "^2.3.2",
     "throttle-debounce": "^3.0.0"
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix"
   }
 }

@@ -3,12 +3,25 @@ import commonjs from '@rollup/plugin-commonjs';
 import { eslint } from 'rollup-plugin-eslint';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
-import { uglify } from 'rollup-plugin-uglify';
 
 import pkg from './package.json';
 
-const base = {
+export default {
     input: 'src/index.js',
+    output: [
+        {
+            file: pkg.main,
+            format: 'cjs',
+            sourcemap: true,
+            exports: 'default',
+        },
+        {
+            file: pkg.module,
+            format: 'es',
+            sourcemap: true,
+            exports: 'default',
+        },
+    ],
     external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
     watch: {
         include: 'src/**',
@@ -23,32 +36,6 @@ const base = {
         }),
         commonjs(),
         nodeResolve(),
+        terser(),
     ],
 };
-
-export default [
-    {
-        ...base,
-        ...{
-            output: {
-                file: pkg.main,
-                format: 'cjs',
-                sourcemap: true,
-                exports: 'default',
-            },
-            plugins: [...base.plugins, uglify()],
-        },
-    },
-    {
-        ...base,
-        ...{
-            output: {
-                file: pkg.module,
-                format: 'es',
-                sourcemap: true,
-                exports: 'default',
-            },
-            plugins: [...base.plugins, terser()],
-        },
-    },
-];

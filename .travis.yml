@@ -2,6 +2,7 @@ language: node_js
 node_js:
   - "node"
 env:
+  - HUSKY=0
   - CODECOV_TOKEN="88b89344-8051-4bc1-aa42-f6428b99355b"
 cache:
   directories:

@@ -1,6 +1,4 @@
-global.requestAnimationFrame = (callback) => setTimeout(callback, 0);
+import { JSDOM } from 'jsdom';
 
-HTMLCanvasElement.prototype.getContext = () => ({
-    clearRect: () => {},
-    fillRect: () => {},
-});
+global.Image = new JSDOM('').window.Image;
+global.requestAnimationFrame = (callback) => setTimeout(callback, 0);

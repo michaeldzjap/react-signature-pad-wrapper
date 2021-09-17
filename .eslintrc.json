@@ -11,7 +11,7 @@
       "version": "detect"
     }
   },
-  "parser": "babel-eslint",
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 12,
     "sourceType": "module",
@@ -32,7 +32,6 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
-    "prettier/prettier": "error",
     "require-jsdoc": [
       "error",
       {

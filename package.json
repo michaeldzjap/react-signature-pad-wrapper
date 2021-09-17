@@ -15,8 +15,7 @@
     "prod": "npm run production",
     "watch": "NODE_ENV=local ./node_modules/.bin/rollup --config --watch",
     "lint": "./node_modules/.bin/eslint ./",
-    "clean": "rm -rf dist",
-    "postinstall": "husky install"
+    "clean": "rm -rf dist"
   },
   "keywords": [
     "react",

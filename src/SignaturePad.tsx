@@ -1,41 +1,54 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import SigPad from 'signature_pad';
+import * as React from 'react';
+import * as SigPad from 'signature_pad';
 import { debounce } from 'throttle-debounce';
+
+type SignaturePadProps = {
+    width?: number;
+    height?: number;
+    options?: SigPad.SignaturePadOptions;
+    canvasProps?: { [key: string]: string };
+} & DefaultProps;
+
+type DefaultProps = {
+    redrawOnResize: boolean;
+    debounceInterval: number;
+};
+
+type SignaturePadState = {
+    canvasWidth: number;
+    canvasHeight: number;
+};
 
 /**
  * @class
  * @classdesc Signature pad component.
  * @extends {PureComponent}
  */
-class SignaturePad extends PureComponent {
+class SignaturePad extends React.PureComponent<SignaturePadProps, SignaturePadState> {
     static displayName = 'react-signature-pad-wrapper';
 
-    static propTypes = {
-        width: PropTypes.number,
-        height: PropTypes.number,
-        options: PropTypes.object,
-        redrawOnResize: PropTypes.bool.isRequired,
-        debounceInterval: PropTypes.number.isRequired,
-        canvasProps: PropTypes.object,
-    };
-
-    static defaultProps = {
+    static defaultProps: DefaultProps = {
         redrawOnResize: false,
         debounceInterval: 150,
     };
 
+    private canvasRef = React.createRef<HTMLCanvasElement>();
+
+    private signaturePad!: SigPad;
+
+    private callResizeHandler!: debounce<() => void>;
+
     /**
      * Create a new signature pad.
      *
-     * @param {Object} props
+     * @param {SignaturePadProps} props
      */
-    constructor(props) {
+    constructor(props: SignaturePadProps) {
         super(props);
 
         this.state = { canvasWidth: 0, canvasHeight: 0 };
 
-        this._callResizeHandler = debounce(this.props.debounceInterval, this.handleResize.bind(this));
+        this.callResizeHandler = debounce<() => void>(this.props.debounceInterval, this.handleResize.bind(this));
     }
 
     /**
@@ -43,18 +56,21 @@ class SignaturePad extends PureComponent {
      *
      * @return {void}
      */
-    componentDidMount() {
-        if (this._canvas) {
+    componentDidMount(): void {
+        const canvas = this.canvasRef.current;
+
+        if (canvas) {
             if (!this.props.width || !this.props.height) {
-                this._canvas.style.width = '100%';
+                canvas.style.width = '100%';
             }
+
             this.scaleCanvas();
 
             if (!this.props.width || !this.props.height) {
-                window.addEventListener('resize', this._callResizeHandler);
+                window.addEventListener('resize', this.callResizeHandler);
             }
 
-            this._signaturePad = new SigPad(this._canvas, this.props.options);
+            this.signaturePad = new SigPad(canvas, this.props.options);
         }
     }
 
@@ -64,21 +80,21 @@ class SignaturePad extends PureComponent {
      *
      * @return {void}
      */
-    componentWillUnmount() {
+    componentWillUnmount(): void {
         if (!this.props.width || !this.props.height) {
-            window.removeEventListener('resize', this._callResizeHandler);
+            window.removeEventListener('resize', this.callResizeHandler);
         }
 
-        this._signaturePad.off();
+        this.signaturePad.off();
     }
 
     /**
      * Get the original signature_pad instance.
      *
-     * @return {SignaturePad}
+     * @return {SigPad}
      */
-    get instance() {
-        return this._signaturePad;
+    get instance(): SigPad {
+        return this.signaturePad;
     }
 
     /**
@@ -86,8 +102,8 @@ class SignaturePad extends PureComponent {
      *
      * @return {Object}
      */
-    get canvas() {
-        return this._canvas;
+    get canvas(): React.RefObject<HTMLCanvasElement> {
+        return this.canvasRef;
     }
 
     /**
@@ -96,8 +112,8 @@ class SignaturePad extends PureComponent {
      * @param {(number|Function)} dotSize
      * @return {void}
      */
-    set dotSize(dotSize) {
-        this._signaturePad.dotSize = dotSize;
+    set dotSize(dotSize: number | (() => number)) {
+        this.signaturePad.dotSize = dotSize;
     }
 
     /**
@@ -105,8 +121,8 @@ class SignaturePad extends PureComponent {
      *
      * @return {number}
      */
-    get dotSize() {
-        return this._signaturePad.dotSize;
+    get dotSize(): number | (() => number) {
+        return this.signaturePad.dotSize;
     }
 
     /**
@@ -115,8 +131,8 @@ class SignaturePad extends PureComponent {
      * @param {number} minWidth
      * @return {void}
      */
-    set minWidth(minWidth) {
-        this._signaturePad.minWidth = minWidth;
+    set minWidth(minWidth: number) {
+        this.signaturePad.minWidth = minWidth;
     }
 
     /**
@@ -124,8 +140,8 @@ class SignaturePad extends PureComponent {
      *
      * @return {number}
      */
-    get minWidth() {
-        return this._signaturePad.minWidth;
+    get minWidth(): number {
+        return this.signaturePad.minWidth;
     }
 
     /**
@@ -134,8 +150,8 @@ class SignaturePad extends PureComponent {
      * @param {number} maxWidth
      * @return {void}
      */
-    set maxWidth(maxWidth) {
-        this._signaturePad.maxWidth = maxWidth;
+    set maxWidth(maxWidth: number) {
+        this.signaturePad.maxWidth = maxWidth;
     }
 
     /**
@@ -143,8 +159,8 @@ class SignaturePad extends PureComponent {
      *
      * @return {number}
      */
-    get maxWidth() {
-        return this._signaturePad.maxWidth;
+    get maxWidth(): number {
+        return this.signaturePad.maxWidth;
     }
 
     /**
@@ -153,8 +169,8 @@ class SignaturePad extends PureComponent {
      * @param {number} throttle
      * @return {void}
      */
-    set throttle(throttle) {
-        this._signaturePad.throttle = throttle;
+    set throttle(throttle: number) {
+        this.signaturePad.throttle = throttle;
     }
 
     /**
@@ -162,8 +178,8 @@ class SignaturePad extends PureComponent {
      *
      * @return {number}
      */
-    get throttle() {
-        return this._signaturePad.throttle;
+    get throttle(): number {
+        return this.signaturePad.throttle;
     }
 
     /**
@@ -172,8 +188,8 @@ class SignaturePad extends PureComponent {
      * @param {string} color
      * @return {void}
      */
-    set backgroundColor(color) {
-        this._signaturePad.backgroundColor = color;
+    set backgroundColor(color: string) {
+        this.signaturePad.backgroundColor = color;
     }
 
     /**
@@ -181,8 +197,8 @@ class SignaturePad extends PureComponent {
      *
      * @return {string}
      */
-    get backgroundColor() {
-        return this._signaturePad.backgroundColor;
+    get backgroundColor(): string {
+        return this.signaturePad.backgroundColor;
     }
 
     /**
@@ -191,8 +207,8 @@ class SignaturePad extends PureComponent {
      * @param {string} color
      * @return {void}
      */
-    set penColor(color) {
-        this._signaturePad.penColor = color;
+    set penColor(color: string) {
+        this.signaturePad.penColor = color;
     }
 
     /**
@@ -200,8 +216,8 @@ class SignaturePad extends PureComponent {
      *
      * @return {string}
      */
-    get penColor() {
-        return this._signaturePad.penColor;
+    get penColor(): string {
+        return this.signaturePad.penColor;
     }
 
     /**
@@ -210,8 +226,8 @@ class SignaturePad extends PureComponent {
      * @param {number} weight
      * @return {void}
      */
-    set velocityFilterWeight(weight) {
-        this._signaturePad.velocityFilterWeight = weight;
+    set velocityFilterWeight(weight: number) {
+        this.signaturePad.velocityFilterWeight = weight;
     }
 
     /**
@@ -219,8 +235,8 @@ class SignaturePad extends PureComponent {
      *
      * @return {number}
      */
-    get velocityFilterWeight() {
-        return this._signaturePad.velocityFilterWeight;
+    get velocityFilterWeight(): number {
+        return this.signaturePad.velocityFilterWeight;
     }
 
     /**
@@ -229,12 +245,12 @@ class SignaturePad extends PureComponent {
      * @param {Function} fn
      * @return {void}
      */
-    set onBegin(fn) {
+    set onBegin(fn: ((event: MouseEvent) => void) | undefined) {
         if (!(fn && typeof fn === 'function')) {
             throw new Error('Invalid argument passed to onBegin()');
         }
 
-        this._signaturePad.onBegin = fn;
+        this.signaturePad.onBegin = fn;
     }
 
     /**
@@ -243,12 +259,12 @@ class SignaturePad extends PureComponent {
      * @param {Function} fn
      * @return {void}
      */
-    set onEnd(fn) {
+    set onEnd(fn: ((event: MouseEvent) => void) | undefined) {
         if (!(fn && typeof fn === 'function')) {
             throw new Error('Invalid argument passed to onEnd()');
         }
 
-        this._signaturePad.onEnd = fn;
+        this.signaturePad.onEnd = fn;
     }
 
     /**
@@ -256,8 +272,8 @@ class SignaturePad extends PureComponent {
      *
      * @return {Boolean}
      */
-    isEmpty() {
-        return this._signaturePad.isEmpty();
+    isEmpty(): boolean {
+        return this.signaturePad.isEmpty();
     }
 
     /**
@@ -265,8 +281,8 @@ class SignaturePad extends PureComponent {
      *
      * @return {void}
      */
-    clear() {
-        this._signaturePad.clear();
+    clear(): void {
+        this.signaturePad.clear();
     }
 
     /**
@@ -275,8 +291,8 @@ class SignaturePad extends PureComponent {
      * @param {string} base64String
      * @return {void}
      */
-    fromDataURL(base64String) {
-        this._signaturePad.fromDataURL(base64String);
+    fromDataURL(base64String: string): void {
+        this.signaturePad.fromDataURL(base64String);
     }
 
     /**
@@ -285,8 +301,8 @@ class SignaturePad extends PureComponent {
      * @param {string} mime
      * @return {string}
      */
-    toDataURL(mime) {
-        return this._signaturePad.toDataURL(mime);
+    toDataURL(mime: string): string {
+        return this.signaturePad.toDataURL(mime);
     }
 
     /**
@@ -295,8 +311,8 @@ class SignaturePad extends PureComponent {
      * @param {Array} data
      * @return {void}
      */
-    fromData(data) {
-        this._signaturePad.fromData(data);
+    fromData(data: Array<Array<SigPad.Point>>): void {
+        this.signaturePad.fromData(data);
     }
 
     /**
@@ -304,8 +320,8 @@ class SignaturePad extends PureComponent {
      *
      * @return {Array}
      */
-    toData() {
-        return this._signaturePad.toData();
+    toData(): Array<Array<SigPad.Point>> {
+        return this.signaturePad.toData();
     }
 
     /**
@@ -313,8 +329,8 @@ class SignaturePad extends PureComponent {
      *
      * @return {void}
      */
-    off() {
-        this._signaturePad.off();
+    off(): void {
+        this.signaturePad.off();
     }
 
     /**
@@ -322,8 +338,8 @@ class SignaturePad extends PureComponent {
      *
      * @return {void}
      */
-    on() {
-        this._signaturePad.on();
+    on(): void {
+        this.signaturePad.on();
     }
 
     /**
@@ -331,7 +347,7 @@ class SignaturePad extends PureComponent {
      *
      * @return {void}
      */
-    handleResize() {
+    handleResize(): void {
         this.scaleCanvas();
     }
 
@@ -340,44 +356,53 @@ class SignaturePad extends PureComponent {
      *
      * @return {void}
      */
-    scaleCanvas() {
+    scaleCanvas(): void {
+        const canvas = this.canvasRef.current;
+
+        if (!canvas) {
+            return;
+        }
+
         const ratio = Math.max(window.devicePixelRatio || 1, 1);
-        const width = (this.props.width || this._canvas.offsetWidth) * ratio;
-        const height = (this.props.height || this._canvas.offsetHeight) * ratio;
+        const width = (this.props.width || canvas.offsetWidth) * ratio;
+        const height = (this.props.height || canvas.offsetHeight) * ratio;
 
         // Avoid needlessly setting height/width if dimensions haven't changed
         const { canvasWidth, canvasHeight } = this.state;
         if (width === canvasWidth && height === canvasHeight) return;
 
         let data;
-        if (this.props.redrawOnResize && this._signaturePad) {
-            data = this._signaturePad.toDataURL();
+        if (this.props.redrawOnResize && this.signaturePad) {
+            data = this.signaturePad.toDataURL();
         }
 
-        this._canvas.width = width;
-        this._canvas.height = height;
+        canvas.width = width;
+        canvas.height = height;
 
         this.setState({ canvasWidth: width, canvasHeight: height });
 
-        const ctx = this._canvas.getContext('2d');
-        ctx.scale(ratio, ratio);
+        const ctx = canvas.getContext('2d');
 
-        if (this.props.redrawOnResize && this._signaturePad) {
-            this._signaturePad.fromDataURL(data);
-        } else if (this._signaturePad) {
-            this._signaturePad.clear();
+        if (ctx) {
+            ctx.scale(ratio, ratio);
+        }
+
+        if (data) {
+            this.signaturePad.fromDataURL(data);
+        } else if (this.signaturePad) {
+            this.signaturePad.clear();
         }
     }
 
     /**
      * Render the signature pad component.
      *
-     * @return {ReactElement}
+     * @return {ReactNode}
      */
-    render() {
+    render(): React.ReactNode {
         const { canvasProps } = this.props;
 
-        return <canvas ref={(ref) => (this._canvas = ref)} {...canvasProps} />;
+        return <canvas ref={this.canvasRef} {...canvasProps} />;
     }
 }
 

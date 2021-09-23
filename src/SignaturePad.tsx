@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as SigPad from 'signature_pad';
 import { debounce } from 'throttle-debounce';
 
-type SignaturePadProps = {
+type Props = {
     width?: number;
     height?: number;
     options?: SigPad.SignaturePadOptions;
@@ -14,7 +14,7 @@ type DefaultProps = {
     debounceInterval: number;
 };
 
-type SignaturePadState = {
+type State = {
     canvasWidth: number;
     canvasHeight: number;
 };
@@ -24,7 +24,7 @@ type SignaturePadState = {
  * @classdesc Signature pad component.
  * @extends {PureComponent}
  */
-class SignaturePad extends React.PureComponent<SignaturePadProps, SignaturePadState> {
+class SignaturePad extends React.PureComponent<Props, State> {
     static displayName = 'react-signature-pad-wrapper';
 
     static defaultProps: DefaultProps = {
@@ -41,9 +41,9 @@ class SignaturePad extends React.PureComponent<SignaturePadProps, SignaturePadSt
     /**
      * Create a new signature pad.
      *
-     * @param {SignaturePadProps} props
+     * @param {Props} props
      */
-    constructor(props: SignaturePadProps) {
+    constructor(props: Props) {
         super(props);
 
         this.state = { canvasWidth: 0, canvasHeight: 0 };

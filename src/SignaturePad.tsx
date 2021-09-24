@@ -1,11 +1,11 @@
 import * as React from 'react';
-import * as SigPad from 'signature_pad';
+import SigPad, { Options, PointGroup } from 'signature_pad';
 import { debounce } from 'throttle-debounce';
 
 type Props = {
     width?: number;
     height?: number;
-    options?: SigPad.SignaturePadOptions;
+    options?: Options;
     canvasProps?: { [key: string]: string };
 } & DefaultProps;
 
@@ -245,7 +245,7 @@ class SignaturePad extends React.PureComponent<Props, State> {
      * @param {Function} fn
      * @return {void}
      */
-    set onBegin(fn: ((event: MouseEvent) => void) | undefined) {
+    set onBegin(fn: ((event: MouseEvent | Touch) => void) | undefined) {
         if (!(fn && typeof fn === 'function')) {
             throw new Error('Invalid argument passed to onBegin()');
         }
@@ -259,7 +259,7 @@ class SignaturePad extends React.PureComponent<Props, State> {
      * @param {Function} fn
      * @return {void}
      */
-    set onEnd(fn: ((event: MouseEvent) => void) | undefined) {
+    set onEnd(fn: ((event: MouseEvent | Touch) => void) | undefined) {
         if (!(fn && typeof fn === 'function')) {
             throw new Error('Invalid argument passed to onEnd()');
         }
@@ -298,29 +298,30 @@ class SignaturePad extends React.PureComponent<Props, State> {
     /**
      * Get the signature data as a data URL.
      *
-     * @param {string} mime
+     * @param {?string} mime
+     * @param {?number} encoderOptions
      * @return {string}
      */
-    toDataURL(mime: string): string {
-        return this.signaturePad.toDataURL(mime);
+    toDataURL(type?: string, encoderOptions?: number): string {
+        return this.signaturePad.toDataURL(type, encoderOptions);
     }
 
     /**
      * Draw a signature from an array of point groups.
      *
-     * @param {Array} data
+     * @param {PointGroup[]} data
      * @return {void}
      */
-    fromData(data: Array<Array<SigPad.Point>>): void {
+    fromData(data: PointGroup[]): void {
         this.signaturePad.fromData(data);
     }
 
     /**
      * Get the signature pad data an array of point groups.
      *
-     * @return {Array}
+     * @return {PointGroup[]}
      */
-    toData(): Array<Array<SigPad.Point>> {
+    toData(): PointGroup[] {
         return this.signaturePad.toData();
     }
 

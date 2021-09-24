@@ -1,10 +1,11 @@
-import path from 'path';
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const path = require('path');
 
-export default {
+module.exports = {
     mode: 'development',
     entry: {
         bundle: './app',
-        vendor: ['react', 'react-dom', 'prop-types'],
+        vendor: ['react', 'react-dom'],
     },
     output: {
         filename: '[name].js',
@@ -14,20 +15,14 @@ export default {
     module: {
         rules: [
             {
-                test: /\.jsx?$/,
-                exclude: path.resolve(__dirname, 'node_modules'),
-                loader: 'babel-loader',
-                options: {
-                    babelrc: false,
-                    presets: ['@babel/preset-env', '@babel/preset-react'],
-                    plugins: ['@babel/plugin-proposal-class-properties'],
-                    cacheDirectory: true,
-                },
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
             },
         ],
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.ts', '.tsx'],
     },
     devtool: 'eval-cheap-module-source-map',
     optimization: {

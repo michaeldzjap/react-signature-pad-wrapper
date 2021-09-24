@@ -44,7 +44,6 @@
     "@types/jsdom": "^16.2.13",
     "@types/react": "^17.0.24",
     "@types/react-dom": "^17.0.9",
-    "@types/signature_pad": "^2.3.2",
     "@types/throttle-debounce": "^2.1.0",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
     "@typescript-eslint/parser": "^4.31.2",
@@ -73,7 +72,7 @@
     "typescript": "^4.4.3"
   },
   "dependencies": {
-    "signature_pad": "^2.3.2",
+    "signature_pad": "^3.0.0-beta.4",
     "throttle-debounce": "^3.0.0"
   },
   "lint-staged": {

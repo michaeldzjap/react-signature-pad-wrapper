@@ -1,26 +1,17 @@
-import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import eslint from '@rollup/plugin-eslint';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import sourceMaps from 'rollup-plugin-sourcemaps';
 import { terser } from 'rollup-plugin-terser';
+import typescript from 'rollup-plugin-typescript2';
 
 import pkg from './package.json';
 
 export default {
-    input: 'src/index.js',
+    input: 'src/index.ts',
     output: [
-        {
-            file: pkg.main,
-            format: 'cjs',
-            sourcemap: true,
-            exports: 'default',
-        },
-        {
-            file: pkg.module,
-            format: 'es',
-            sourcemap: true,
-            exports: 'default',
-        },
+        { file: pkg.main, format: 'cjs', sourcemap: true, exports: 'named' },
+        { file: pkg.module, format: 'es', sourcemap: true },
     ],
     external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
     watch: {
@@ -28,14 +19,13 @@ export default {
     },
     plugins: [
         eslint(),
-        babel({
-            exclude: 'node_modules/**',
-            babelHelpers: 'runtime',
-            inputSourceMap: true,
-            sourceMaps: true,
+        typescript({
+            typescript: require('typescript'),
+            clean: true,
         }),
         commonjs(),
         nodeResolve(),
+        sourceMaps(),
         terser(),
     ],
 };

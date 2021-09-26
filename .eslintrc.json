@@ -11,19 +11,16 @@
       "version": "detect"
     }
   },
-  "parser": "@babel/eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 12,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
-    },
-    "requireConfigFile": false,
-    "babelOptions": {
-      "presets": ["@babel/preset-react"]
     }
   },
   "plugins": [
+    "@typescript-eslint",
     "import",
     "react",
     "jest"
@@ -33,6 +30,7 @@
     "plugin:react/recommended",
     "plugin:jest/recommended",
     "plugin:eslint-comments/recommended",
+    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
   "rules": {

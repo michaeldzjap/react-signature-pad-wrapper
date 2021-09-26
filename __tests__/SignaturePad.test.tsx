@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { mount } from 'enzyme';
 
 import './helpers/resizeWindow';
@@ -7,7 +7,7 @@ import SignaturePad from '../src/SignaturePad';
 
 describe('Component', () => {
     describe('SignaturePad', () => {
-        const signaturePad = mount(<SignaturePad />);
+        const signaturePad = mount<SignaturePad>(<SignaturePad />);
         const instance = signaturePad.instance();
 
         it('renders the component', () => {
@@ -30,20 +30,6 @@ describe('Component', () => {
 
             instance.clear();
             expect(instance.isEmpty()).toBeTruthy();
-        });
-
-        it('fails to assign an invalid value to the onBegin option', () => {
-            // eslint-disable-next-line require-jsdoc
-            const fn = () => (instance.onBegin = 100);
-
-            expect(fn).toThrow('Invalid argument passed to onBegin()');
-        });
-
-        it('fails to assign an invalid value to the onEnd option', () => {
-            // eslint-disable-next-line require-jsdoc
-            const fn = () => (instance.onEnd = 'a');
-
-            expect(fn).toThrow('Invalid argument passed to onEnd()');
         });
     });
 });

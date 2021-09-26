@@ -1,20 +1,31 @@
-import React, { PureComponent } from 'react';
+import * as React from 'react';
 
-import SignaturePad from '../dist/react-signature-pad-wrapper';
+import SignaturePad from '../src/SignaturePad';
 
 /**
  * @class
  * @classdesc Layout component.
  * @extends {PureComponent}
  */
-class Layout extends PureComponent {
+class Layout extends React.PureComponent {
+    /**
+     * The signature pad component reference.
+     *
+     * @var {RefObject}
+     */
+    private signaturePadRef = React.createRef<SignaturePad>();
+
     /**
      * Clear the signature pad.
      *
      * @return {void}
      */
-    handleClear() {
-        this.signaturePad.instance.clear();
+    handleClear(): void {
+        const signaturePad = this.signaturePadRef.current;
+
+        if (signaturePad) {
+            signaturePad.instance.clear();
+        }
     }
 
     /**
@@ -22,21 +33,27 @@ class Layout extends PureComponent {
      *
      * @return {void}
      */
-    handleSave() {
-        if (this.signaturePad.isEmpty()) {
+    handleSave(): void {
+        const signaturePad = this.signaturePadRef.current;
+
+        if (!signaturePad) {
+            return;
+        }
+
+        if (signaturePad.isEmpty()) {
             // eslint-disable-next-line no-alert
             alert('Please provide a signature first.');
         } else {
-            window.open(this.signaturePad.toDataURL());
+            window.open(signaturePad.toDataURL());
         }
     }
 
     /**
      * Render the title.
      *
-     * @return {ReactElement}
+     * @return {ReactNode}
      */
-    renderTitle() {
+    renderTitle(): React.ReactNode {
         return (
             <div className="columns">
                 <div className="column">
@@ -50,16 +67,16 @@ class Layout extends PureComponent {
     /**
      * Render the signature pad.
      *
-     * @return {ReactElement}
+     * @return {ReactNode}
      */
-    renderSignaturePad() {
+    renderSignaturePad(): React.ReactNode {
         return (
             <div className="columns">
                 <div className="column is-10-tablet is-offset-1-tablet is-8-desktop is-offset-2-desktop">
                     <div className="card">
                         <div className="card-content">
                             <div className="content">
-                                <SignaturePad redrawOnResize={true} ref={(ref) => (this.signaturePad = ref)} />
+                                <SignaturePad redrawOnResize ref={this.signaturePadRef} />
                             </div>
                         </div>
                         <footer className="card-footer">
@@ -82,9 +99,9 @@ class Layout extends PureComponent {
     /**
      * Render the layout component.
      *
-     * @return {ReactElement}
+     * @return {ReactNode}
      */
-    render() {
+    render(): React.ReactNode {
         return (
             <section className="section">
                 <div className="container">

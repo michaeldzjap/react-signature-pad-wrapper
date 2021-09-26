@@ -11,8 +11,6 @@
 # react-signature-pad-wrapper
 A React wrapper for [signature pad](https://github.com/szimek/signature_pad).
 
-There are some other React packages that are based off the original *signature_pad* plugin (e.g. [react-signature-pad](https://github.com/blackjk3/react-signature-pad), [react-signature-canvas](https://github.com/agilgur5/react-signature-canvas)). This package is different in the sense that it relies on *signature_pad* as a dependency rather than an implementation that is based off of it (like the aforementioned packages).
-
 ## Installation
 This package is available through npm:
 ```
@@ -40,7 +38,7 @@ or they can be set during runtime:
 ```javascript
 ...
 render() {
-  return <SignaturePad ref={ref => this.signaturePad = ref} />;
+  return <SignaturePad ref={this.signaturePadRef} />;
 }
 ...
 ```
@@ -80,7 +78,7 @@ If you'd like to keep what is currently drawn on the canvas you can pass a `redr
 ```javascript
 ...
 render() {
-  return <SignaturePad redrawOnResize={true} />;
+  return <SignaturePad redrawOnResize />;
 }
 ...
 ```

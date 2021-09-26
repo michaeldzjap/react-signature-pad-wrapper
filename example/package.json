@@ -5,7 +5,7 @@
   "main": "dist/app.js",
   "jsnext:main": "app.js",
   "scripts": {
-    "build": "node -r @babel/register ./node_modules/.bin/webpack --progress",
+    "build": "./node_modules/.bin/webpack --progress",
     "watch": "npm run build -- --watch"
   },
   "repository": {
@@ -23,22 +23,16 @@
   },
   "homepage": "https://github.com/michaeldzjap/react-signature-pad-wrapper#readme",
   "dependencies": {
-    "@babel/runtime": "^7.11.2",
     "bulma": "^0.9.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/eslint-parser": "^7.15.4",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/preset-env": "^7.11.5",
-    "@babel/preset-react": "^7.10.4",
-    "@babel/register": "^7.11.5",
-    "babel-loader": "^8.1.0",
-    "eslint": "^7.32.0",
-    "eslint-plugin-react": "^7.20.6",
-    "webpack": "^5.3.2",
-    "webpack-cli": "^4.1.0"
+    "@types/react": "^17.0.24",
+    "@types/react-dom": "^17.0.9",
+    "ts-loader": "^9.2.6",
+    "typescript": "^4.4.3",
+    "webpack": "^5.53.0",
+    "webpack-cli": "^4.8.0"
   }
 }

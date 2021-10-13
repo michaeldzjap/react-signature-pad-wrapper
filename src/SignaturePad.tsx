@@ -6,7 +6,7 @@ type Props = {
     width?: number;
     height?: number;
     options?: Options;
-    canvasProps?: { [key: string]: string };
+    canvasProps?: { [key: string]: string | { [key: string]: string } };
 } & DefaultProps;
 
 type DefaultProps = {

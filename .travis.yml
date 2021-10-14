@@ -8,10 +8,11 @@ cache:
   directories:
     - node_modules
 before_install:
-  - pip install --user codecov
+  - curl -Os https://uploader.codecov.io/latest/linux/codecov
+  - chmod +x codecov
 before_script:
   - npm run lint
 script:
   - npm test
 after_success:
-  - codecov --file coverage/lcov.info --disable search
+  - ./codecov -t ${CODECOV_TOKEN} -f coverage/lcov.info

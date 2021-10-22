@@ -15,7 +15,7 @@ before_install:
 before_script:
   - npm run lint
 script:
-  - sonar-scanner
   - npm test
+  - sonar-scanner
 after_success:
   - ./codecov -f coverage/lcov.info

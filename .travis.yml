@@ -1,6 +1,9 @@
 language: node_js
 node_js:
   - "lts/*"
+addons:
+  sonarcloud:
+    organization: michaeldzjap-github
 env:
   - HUSKY=0
 cache:

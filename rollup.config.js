@@ -1,9 +1,9 @@
 import commonjs from '@rollup/plugin-commonjs';
-import eslint from '@rollup/plugin-eslint';
+// import eslint from '@rollup/plugin-eslint';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import typescript from '@rollup/plugin-typescript';
 import sourceMaps from 'rollup-plugin-sourcemaps';
 import { terser } from 'rollup-plugin-terser';
-import typescript from 'rollup-plugin-typescript2';
 
 import pkg from './package.json';
 
@@ -18,10 +18,9 @@ export default {
         include: 'src/**',
     },
     plugins: [
-        eslint(),
+        // eslint(),
         typescript({
             typescript: require('typescript'),
-            clean: true,
         }),
         commonjs(),
         nodeResolve(),

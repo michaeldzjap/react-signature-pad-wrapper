@@ -109,10 +109,10 @@ class SignaturePad extends React.PureComponent<Props, State> {
     /**
      * Set the radius of a single dot.
      *
-     * @param {(number|Function)} dotSize
+     * @param {number} dotSize
      * @return {void}
      */
-    set dotSize(dotSize: number | (() => number)) {
+    set dotSize(dotSize: number) {
         this.signaturePad.dotSize = dotSize;
     }
 
@@ -121,7 +121,7 @@ class SignaturePad extends React.PureComponent<Props, State> {
      *
      * @return {number}
      */
-    get dotSize(): number | (() => number) {
+    get dotSize(): number {
         return this.signaturePad.dotSize;
     }
 
@@ -237,34 +237,6 @@ class SignaturePad extends React.PureComponent<Props, State> {
      */
     get velocityFilterWeight(): number {
         return this.signaturePad.velocityFilterWeight;
-    }
-
-    /**
-     * Set callback that will be triggered on stroke begin.
-     *
-     * @param {Function} fn
-     * @return {void}
-     */
-    set onBegin(fn: ((event: MouseEvent | Touch) => void) | undefined) {
-        if (!(fn && typeof fn === 'function')) {
-            throw new Error('Invalid argument passed to onBegin()');
-        }
-
-        this.signaturePad.onBegin = fn;
-    }
-
-    /**
-     * Set callback that will be triggered on stroke end.
-     *
-     * @param {Function} fn
-     * @return {void}
-     */
-    set onEnd(fn: ((event: MouseEvent | Touch) => void) | undefined) {
-        if (!(fn && typeof fn === 'function')) {
-            throw new Error('Invalid argument passed to onEnd()');
-        }
-
-        this.signaturePad.onEnd = fn;
     }
 
     /**

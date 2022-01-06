@@ -87,5 +87,37 @@ describe('Component', () => {
 
             expect(instance.toData()).toBe(data);
         });
+
+        it('unbinds all event handlers', () => {
+            const spy = jest.spyOn(instance.instance, 'off');
+
+            instance.off();
+
+            expect(spy).toHaveBeenCalled();
+        });
+
+        it('rebinds all event handlers', () => {
+            const spy = jest.spyOn(instance.instance, 'on');
+
+            instance.on();
+
+            expect(spy).toHaveBeenCalled();
+        });
+
+        it('scales the canvas when resizing the viewport', () => {
+            const spy = jest.spyOn(instance, 'scaleCanvas');
+
+            instance.handleResize();
+
+            expect(spy).toHaveBeenCalled();
+        });
+
+        it('removes the resize event listener on unmount', () => {
+            const spy = jest.spyOn(window, 'removeEventListener');
+
+            signaturePad.unmount();
+
+            expect(spy).toHaveBeenCalled();
+        });
     });
 });

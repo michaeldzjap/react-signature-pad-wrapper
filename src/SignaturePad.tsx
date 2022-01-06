@@ -48,9 +48,7 @@ class SignaturePad extends React.PureComponent<Props, State> {
 
         this.state = { canvasWidth: 0, canvasHeight: 0 };
 
-        this.callResizeHandler = debounce<() => void>(
-            this.props.debounceInterval, this.handleResize.bind(this)
-        );
+        this.callResizeHandler = debounce<() => void>(this.props.debounceInterval, this.handleResize.bind(this));
     }
 
     /**

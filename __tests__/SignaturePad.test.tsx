@@ -45,7 +45,7 @@ describe('Component', () => {
         });
 
         [
-            { name: 'dot size', option: 'dotSize', expected: 3, },
+            { name: 'dot size', option: 'dotSize', expected: 3 },
             { name: 'min width', option: 'minWidth', expected: 1 },
             { name: 'max width', option: 'maxWidth', expected: 3 },
             { name: 'throttle', option: 'throttle', expected: 20 },
@@ -79,10 +79,8 @@ describe('Component', () => {
                     maxWidth: 2.5,
                     minWidth: 0.5,
                     penColor: 'black',
-                    points: [
-                        { pressure: 0.5, time: 1641476147709, x: 100, y: 100 },
-                    ]
-                }
+                    points: [{ pressure: 0.5, time: 1641476147709, x: 100, y: 100 }],
+                },
             ];
 
             instance.fromData(data);

@@ -131,14 +131,42 @@ describe('Component', () => {
             spy.mockRestore();
         });
 
-        it('scales the canvas when resizing the viewport', () => {
+        it('redraws the signature when the viewport dimensions change', () => {
             const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
             const instance = signaturePad.instance();
-            const spy = jest.spyOn(instance, 'scaleCanvas');
+            const spy = jest.spyOn(instance.instance, 'toDataURL');
+
+            Object.defineProperty(HTMLCanvasElement.prototype, 'offsetWidth', {
+                configurable: true,
+                value: 1024,
+            });
+            Object.defineProperty(HTMLCanvasElement.prototype, 'offsetHeight', {
+                configurable: true,
+                value: 768,
+            });
 
             instance.handleResize();
 
             expect(spy).toHaveBeenCalled();
+        });
+
+        it('does not redraw the signature when the viewport dimensions have not changed', () => {
+            Object.defineProperty(HTMLCanvasElement.prototype, 'offsetWidth', {
+                configurable: true,
+                value: 1024,
+            });
+            Object.defineProperty(HTMLCanvasElement.prototype, 'offsetHeight', {
+                configurable: true,
+                value: 768,
+            });
+
+            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
+            const instance = signaturePad.instance();
+            const spy = jest.spyOn(instance.instance, 'toDataURL');
+
+            instance.handleResize();
+
+            expect(spy).not.toHaveBeenCalled();
         });
 
         it('does not add the resize event listener on mount', () => {

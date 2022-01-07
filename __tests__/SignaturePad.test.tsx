@@ -193,7 +193,6 @@ describe('Component', () => {
 
         it('adds the resize event listener on mount', () => {
             const spy = jest.spyOn(window, 'addEventListener');
-
             const signaturePad = mount<SignaturePad>(<SignaturePad />);
 
             expect(spy).toHaveBeenCalledWith('resize', Reflect.get(signaturePad.instance(), 'callResizeHandler'));

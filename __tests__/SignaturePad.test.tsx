@@ -5,7 +5,14 @@ import SigPad from 'signature_pad';
 import signature from './helpers/signature';
 import SignaturePad from '../src/SignaturePad';
 
-const scaleCanvas = (width: number, height: number) => {
+/**
+ * Set the dimension of the HTML canvas element to the given width and height.
+ *
+ * @param {number} width
+ * @param {number} height
+ * @return {void}
+ */
+const scaleCanvas = (width: number, height: number): void => {
     Object.defineProperty(HTMLCanvasElement.prototype, 'offsetWidth', {
         configurable: true,
         value: width,

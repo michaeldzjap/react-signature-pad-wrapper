@@ -67,7 +67,6 @@
     "react": "*",
     "react-dom": "*",
     "rollup": "^2.26.11",
-    "rollup-plugin-sourcemaps": "^0.6.3",
     "rollup-plugin-terser": "^7.0.2",
     "ts-jest": "^27.0.5",
     "typescript": "^4.4.3"

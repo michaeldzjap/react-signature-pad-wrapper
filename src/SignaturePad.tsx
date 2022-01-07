@@ -62,15 +62,12 @@ class SignaturePad extends React.PureComponent<Props, State> {
         if (canvas) {
             if (!this.props.width || !this.props.height) {
                 canvas.style.width = '100%';
-            }
-
-            this.scaleCanvas();
-
-            if (!this.props.width || !this.props.height) {
                 window.addEventListener('resize', this.callResizeHandler);
             }
 
             this.signaturePad = new SigPad(canvas, this.props.options);
+
+            this.scaleCanvas();
         }
     }
 
@@ -332,19 +329,19 @@ class SignaturePad extends React.PureComponent<Props, State> {
     scaleCanvas(): void {
         const canvas = this.canvasRef.current;
 
-        if (!canvas) {
-            return;
-        }
+        if (!canvas) return;
 
         const ratio = Math.max(window.devicePixelRatio || 1, 1);
         const width = (this.props.width || canvas.offsetWidth) * ratio;
         const height = (this.props.height || canvas.offsetHeight) * ratio;
 
-        // Avoid needlessly setting height/width if dimensions haven't changed
+        // Avoid needlessly setting height / width if dimensions haven't changed
         const { canvasWidth, canvasHeight } = this.state;
+
         if (width === canvasWidth && height === canvasHeight) return;
 
         let data;
+
         if (this.props.redrawOnResize && this.signaturePad) {
             data = this.signaturePad.toDataURL();
         }

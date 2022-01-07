@@ -5,10 +5,22 @@ import SigPad from 'signature_pad';
 import signature from './helpers/signature';
 import SignaturePad from '../src/SignaturePad';
 
+const scaleCanvas = (width: number, height: number) => {
+    Object.defineProperty(HTMLCanvasElement.prototype, 'offsetWidth', {
+        configurable: true,
+        value: width,
+    });
+    Object.defineProperty(HTMLCanvasElement.prototype, 'offsetHeight', {
+        configurable: true,
+        value: height,
+    });
+};
+
 describe('Component', () => {
     describe('SignaturePad', () => {
         beforeEach(() => {
             jest.restoreAllMocks();
+            scaleCanvas(1024, 768);
         });
 
         it('renders the component', () => {
@@ -20,6 +32,8 @@ describe('Component', () => {
         it('loads a signature', () => {
             const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
             const instance = signaturePad.instance();
+
+            instance.clear();
 
             expect(instance.isEmpty()).toBeTruthy();
 
@@ -131,35 +145,29 @@ describe('Component', () => {
             spy.mockRestore();
         });
 
-        it('redraws the signature when the viewport dimensions change', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
+        it('does not redraw a signature by default when the viewport dimensions change', () => {
+            const signaturePad = mount<SignaturePad>(<SignaturePad />);
             const instance = signaturePad.instance();
-            const spy = jest.spyOn(instance.instance, 'toDataURL');
+            const spy = jest.spyOn(instance.instance, 'clear');
 
-            Object.defineProperty(HTMLCanvasElement.prototype, 'offsetWidth', {
-                configurable: true,
-                value: 1024,
-            });
-            Object.defineProperty(HTMLCanvasElement.prototype, 'offsetHeight', {
-                configurable: true,
-                value: 768,
-            });
-
+            scaleCanvas(768, 768);
             instance.handleResize();
 
             expect(spy).toHaveBeenCalled();
         });
 
-        it('does not redraw the signature when the viewport dimensions have not changed', () => {
-            Object.defineProperty(HTMLCanvasElement.prototype, 'offsetWidth', {
-                configurable: true,
-                value: 1024,
-            });
-            Object.defineProperty(HTMLCanvasElement.prototype, 'offsetHeight', {
-                configurable: true,
-                value: 768,
-            });
+        it('redraws a signature when the viewport dimensions change', () => {
+            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
+            const instance = signaturePad.instance();
+            const spy = jest.spyOn(instance.instance, 'toDataURL');
 
+            scaleCanvas(768, 768);
+            instance.handleResize();
+
+            expect(spy).toHaveBeenCalled();
+        });
+
+        it('does not redraw a signature when the viewport dimensions have not changed', () => {
             const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
             const instance = signaturePad.instance();
             const spy = jest.spyOn(instance.instance, 'toDataURL');

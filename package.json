@@ -1,6 +1,6 @@
 {
   "name": "react-signature-pad-wrapper",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "A React component wrapper for signature_pad",
   "main": "dist/react-signature-pad-wrapper.js",
   "module": "dist/react-signature-pad-wrapper.es.js",
@@ -67,7 +67,6 @@
     "react": "*",
     "react-dom": "*",
     "rollup": "^2.26.11",
-    "rollup-plugin-sourcemaps": "^0.6.3",
     "rollup-plugin-terser": "^7.0.2",
     "ts-jest": "^27.0.5",
     "typescript": "^4.4.3"

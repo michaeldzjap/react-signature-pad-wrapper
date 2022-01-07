@@ -62,13 +62,10 @@ class SignaturePad extends React.PureComponent<Props, State> {
         if (canvas) {
             if (!this.props.width || !this.props.height) {
                 canvas.style.width = '100%';
+                window.addEventListener('resize', this.callResizeHandler);
             }
 
             this.scaleCanvas();
-
-            if (!this.props.width || !this.props.height) {
-                window.addEventListener('resize', this.callResizeHandler);
-            }
 
             this.signaturePad = new SigPad(canvas, this.props.options);
         }

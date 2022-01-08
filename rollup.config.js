@@ -11,8 +11,19 @@ const local = process.env.NODE_ENV === 'local';
 export default {
     input: 'src/index.ts',
     output: [
-        { file: pkg.main, format: 'cjs', sourcemap: local, exports: 'named' },
-        { file: pkg.module, format: 'es', sourcemap: local },
+        {
+            dir: './',
+            entryFileNames: pkg.main,
+            format: 'cjs',
+            sourcemap: local,
+            exports: 'named',
+        },
+        {
+            dir: './',
+            entryFileNames: pkg.module,
+            format: 'es',
+            sourcemap: local,
+        },
     ],
     external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
     watch: {
@@ -23,6 +34,9 @@ export default {
         typescript({
             typescript: require('typescript'),
             sourceMap: local,
+            declaration: true,
+            declarationDir: 'dist/',
+            rootDir: 'src/',
         }),
         commonjs(),
         nodeResolve(),

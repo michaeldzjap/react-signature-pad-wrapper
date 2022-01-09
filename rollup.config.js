@@ -34,9 +34,6 @@ export default {
         typescript({
             typescript: require('typescript'),
             sourceMap: local,
-            declaration: true,
-            declarationDir: 'dist/',
-            rootDir: 'src/',
         }),
         commonjs(),
         nodeResolve(),

@@ -3,4 +3,4 @@ import * as ReactDOM from 'react-dom';
 
 import Layout from './Layout';
 
-ReactDOM.render(<Layout />, document.getElementById('root'));
+ReactDOM.createRoot(document.getElementById('root')).render(<Layout />);

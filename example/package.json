@@ -24,12 +24,12 @@
   "homepage": "https://github.com/michaeldzjap/react-signature-pad-wrapper#readme",
   "dependencies": {
     "bulma": "^0.9.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1"
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
   },
   "devDependencies": {
-    "@types/react": "^17.0.24",
-    "@types/react-dom": "^17.0.9",
+    "@types/react": "^18.0.8",
+    "@types/react-dom": "^18.0.3",
     "ts-loader": "^9.2.6",
     "typescript": "^4.4.3",
     "webpack": "^5.53.0",

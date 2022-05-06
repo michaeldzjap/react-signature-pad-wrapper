@@ -125,7 +125,7 @@ describe('Component', () => {
 
             instance.fromData(data);
 
-            expect(instance.toData()).toBe(data);
+            expect(instance.toData()).toStrictEqual(data);
         });
 
         it('unbinds all event handlers', () => {

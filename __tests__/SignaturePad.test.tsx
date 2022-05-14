@@ -35,7 +35,7 @@ describe('Component', () => {
         it('renders the component', () => {
             const { queryByTestId } = render(<SignaturePad redrawOnResize />);
 
-            expect(queryByTestId('canvas-element')).toBeTruthy();
+            expect(queryByTestId('canvas-element')).toBeInTheDocument();
         });
 
         it('loads a signature', () => {
@@ -142,7 +142,7 @@ describe('Component', () => {
             const instance = React.createRef<SignaturePad>();
 
             render(<SignaturePad ref={instance} redrawOnResize />);
-            
+
             const spy = jest.spyOn(instance.current!.instance, 'off');
 
             instance.current!.off();
@@ -214,7 +214,10 @@ describe('Component', () => {
 
             render(<SignaturePad ref={instance} redrawOnResize width={512} height={512} />);
 
-            expect(spy).not.toHaveBeenCalledWith('resize', Reflect.get(instance.current as SignaturePad, 'callResizeHandler'));
+            expect(spy).not.toHaveBeenCalledWith(
+                'resize',
+                Reflect.get(instance.current as SignaturePad, 'callResizeHandler'),
+            );
         });
 
         it('adds the resize event listener on mount', () => {
@@ -222,9 +225,11 @@ describe('Component', () => {
             const instance = React.createRef<SignaturePad>();
 
             render(<SignaturePad ref={instance} />);
-            
 
-            expect(spy).toHaveBeenCalledWith('resize', Reflect.get(instance.current as SignaturePad, 'callResizeHandler'));
+            expect(spy).toHaveBeenCalledWith(
+                'resize',
+                Reflect.get(instance.current as SignaturePad, 'callResizeHandler'),
+            );
         });
 
         it('removes the resize event listener on unmount', () => {

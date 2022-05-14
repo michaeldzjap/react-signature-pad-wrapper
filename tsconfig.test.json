@@ -1,6 +1,7 @@
 {
   "extends": "./tsconfig.base",
   "compilerOptions": {
+    "target": "es6",
     "esModuleInterop": true
   },
   "include": [

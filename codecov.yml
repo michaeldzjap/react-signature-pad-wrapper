@@ -1,0 +1,3 @@
+ignore:
+  - "__tests__/**/*"
+  - "example/**/*"

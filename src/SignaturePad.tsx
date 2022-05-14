@@ -373,7 +373,7 @@ class SignaturePad extends React.PureComponent<Props, State> {
     render(): React.ReactNode {
         const { canvasProps } = this.props;
 
-        return <canvas ref={this.canvasRef} {...canvasProps} />;
+        return <canvas data-testid="canvas-element" ref={this.canvasRef} {...canvasProps} />;
     }
 }
 

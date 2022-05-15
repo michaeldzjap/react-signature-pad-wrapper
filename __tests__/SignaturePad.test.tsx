@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { act } from 'react-dom/test-utils';
+import { render } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import SigPad from 'signature_pad';
 
 import signature from './helpers/signature';
@@ -31,49 +33,53 @@ describe('Component', () => {
         });
 
         it('renders the component', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
+            const { queryByTestId } = render(<SignaturePad redrawOnResize />);
 
-            expect(signaturePad.exists()).toBeTruthy();
+            expect(queryByTestId('canvas-element')).toBeInTheDocument();
         });
 
         it('loads a signature', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
-            const instance = signaturePad.instance();
+            const instance = React.createRef<SignaturePad>();
 
-            instance.clear();
+            render(<SignaturePad ref={instance} redrawOnResize />);
 
-            expect(instance.isEmpty()).toBeTruthy();
+            instance.current!.clear();
 
-            instance.fromDataURL(signature);
+            expect(instance.current!.isEmpty()).toBeTruthy();
 
-            expect(instance.isEmpty()).toBeFalsy();
+            instance.current!.fromDataURL(signature);
+
+            expect(instance.current!.isEmpty()).toBeFalsy();
         });
 
         it('clears the signature pad', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
-            const instance = signaturePad.instance();
+            const instance = React.createRef<SignaturePad>();
 
-            instance.fromDataURL(signature);
+            render(<SignaturePad ref={instance} redrawOnResize />);
 
-            expect(instance.isEmpty()).toBeFalsy();
+            instance.current!.fromDataURL(signature);
 
-            instance.clear();
+            expect(instance.current!.isEmpty()).toBeFalsy();
 
-            expect(instance.isEmpty()).toBeTruthy();
+            instance.current!.clear();
+
+            expect(instance.current!.isEmpty()).toBeTruthy();
         });
 
         it('returns the underlying signature pad instance', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
-            const instance = signaturePad.instance();
+            const instance = React.createRef<SignaturePad>();
 
-            expect(instance.instance).toBeInstanceOf(SigPad);
+            render(<SignaturePad ref={instance} redrawOnResize />);
+
+            expect(instance.current!.instance).toBeInstanceOf(SigPad);
         });
 
         it('returns a ref to the underlying HTML canvas element', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
-            const instance = signaturePad.instance();
+            const instance = React.createRef<SignaturePad>();
 
-            expect(instance.canvas).toBeInstanceOf(Object);
+            render(<SignaturePad ref={instance} redrawOnResize />);
+
+            expect(instance.current!.canvas).toBeInstanceOf(Object);
         });
 
         [
@@ -86,32 +92,36 @@ describe('Component', () => {
             { name: 'velocity filter weight', option: 'velocityFilterWeight', expected: 1 },
         ].forEach(({ name, option, expected }) => {
             it(`sets and gets the ${name}`, () => {
-                const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
-                const instance = signaturePad.instance();
+                const instance = React.createRef<SignaturePad>();
 
-                Reflect.set(instance, option, expected);
+                render(<SignaturePad ref={instance} redrawOnResize />);
 
-                expect(Reflect.get(instance, option)).toBe(expected);
+                Reflect.set(instance.current as SignaturePad, option, expected);
+
+                expect(Reflect.get(instance.current as SignaturePad, option)).toBe(expected);
             });
         });
 
         it('returns a signature as a data URL', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
-            const instance = signaturePad.instance();
+            const instance = React.createRef<SignaturePad>();
 
-            expect(instance.toDataURL()).toContain('data:image/png;base64');
+            render(<SignaturePad ref={instance} redrawOnResize />);
+
+            expect(instance.current!.toDataURL()).toContain('data:image/png;base64');
         });
 
         it('returns a signature as an array of data points', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
-            const instance = signaturePad.instance();
+            const instance = React.createRef<SignaturePad>();
 
-            expect(instance.toData()).toHaveLength(0);
+            render(<SignaturePad ref={instance} redrawOnResize />);
+
+            expect(instance.current!.toData()).toHaveLength(0);
         });
 
         it('draws a signature from an array of data points', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
-            const instance = signaturePad.instance();
+            const instance = React.createRef<SignaturePad>();
+
+            render(<SignaturePad ref={instance} redrawOnResize />);
 
             const data = [
                 {
@@ -123,17 +133,19 @@ describe('Component', () => {
                 },
             ];
 
-            instance.fromData(data);
+            instance.current!.fromData(data);
 
-            expect(instance.toData()).toBe(data);
+            expect(instance.current!.toData()).toStrictEqual(data);
         });
 
         it('unbinds all event handlers', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
-            const instance = signaturePad.instance();
-            const spy = jest.spyOn(instance.instance, 'off');
+            const instance = React.createRef<SignaturePad>();
 
-            instance.off();
+            render(<SignaturePad ref={instance} redrawOnResize />);
+
+            const spy = jest.spyOn(instance.current!.instance, 'off');
+
+            instance.current!.off();
 
             expect(spy).toHaveBeenCalled();
 
@@ -141,11 +153,13 @@ describe('Component', () => {
         });
 
         it('rebinds all event handlers', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
-            const instance = signaturePad.instance();
-            const spy = jest.spyOn(instance.instance, 'on');
+            const instance = React.createRef<SignaturePad>();
 
-            instance.on();
+            render(<SignaturePad ref={instance} redrawOnResize />);
+
+            const spy = jest.spyOn(instance.current!.instance, 'on');
+
+            instance.current!.on();
 
             expect(spy).toHaveBeenCalled();
 
@@ -153,67 +167,91 @@ describe('Component', () => {
         });
 
         it('does not redraw a signature by default when the viewport dimensions change', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad />);
-            const instance = signaturePad.instance();
-            const spy = jest.spyOn(instance.instance, 'clear');
+            const instance = React.createRef<SignaturePad>();
+
+            render(<SignaturePad ref={instance} />);
+
+            const spy = jest.spyOn(instance.current!.instance, 'clear');
 
             scaleCanvas(768, 768);
-            instance.handleResize();
+            act(() => {
+                instance.current!.handleResize();
+            });
 
             expect(spy).toHaveBeenCalled();
         });
 
         it('redraws a signature when the viewport dimensions change', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
-            const instance = signaturePad.instance();
-            const spy = jest.spyOn(instance.instance, 'toDataURL');
+            const instance = React.createRef<SignaturePad>();
+
+            render(<SignaturePad ref={instance} redrawOnResize />);
+
+            const spy = jest.spyOn(instance.current!.instance, 'toDataURL');
 
             scaleCanvas(768, 768);
-            instance.handleResize();
+            act(() => {
+                instance.current!.handleResize();
+            });
 
             expect(spy).toHaveBeenCalled();
         });
 
         it('does not redraw a signature when the viewport dimensions have not changed', () => {
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
-            const instance = signaturePad.instance();
-            const spy = jest.spyOn(instance.instance, 'toDataURL');
+            const instance = React.createRef<SignaturePad>();
 
-            instance.handleResize();
+            render(<SignaturePad ref={instance} redrawOnResize />);
+
+            const spy = jest.spyOn(instance.current!.instance, 'toDataURL');
+
+            instance.current!.handleResize();
 
             expect(spy).not.toHaveBeenCalled();
         });
 
         it('does not add the resize event listener on mount', () => {
             const spy = jest.spyOn(window, 'addEventListener');
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize width={512} height={512} />);
+            const instance = React.createRef<SignaturePad>();
 
-            expect(spy).not.toHaveBeenCalledWith('resize', Reflect.get(signaturePad.instance(), 'callResizeHandler'));
+            render(<SignaturePad ref={instance} redrawOnResize width={512} height={512} />);
+
+            expect(spy).not.toHaveBeenCalledWith(
+                'resize',
+                Reflect.get(instance.current as SignaturePad, 'callResizeHandler'),
+            );
         });
 
         it('adds the resize event listener on mount', () => {
             const spy = jest.spyOn(window, 'addEventListener');
-            const signaturePad = mount<SignaturePad>(<SignaturePad />);
+            const instance = React.createRef<SignaturePad>();
 
-            expect(spy).toHaveBeenCalledWith('resize', Reflect.get(signaturePad.instance(), 'callResizeHandler'));
+            render(<SignaturePad ref={instance} />);
+
+            expect(spy).toHaveBeenCalledWith(
+                'resize',
+                Reflect.get(instance.current as SignaturePad, 'callResizeHandler'),
+            );
         });
 
         it('removes the resize event listener on unmount', () => {
             const spy = jest.spyOn(window, 'removeEventListener');
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize />);
-            const handler = Reflect.get(signaturePad.instance(), 'callResizeHandler');
+            const instance = React.createRef<SignaturePad>();
 
-            signaturePad.unmount();
+            const { unmount } = render(<SignaturePad ref={instance} redrawOnResize />);
+            const handler = Reflect.get(instance.current as SignaturePad, 'callResizeHandler');
+
+            unmount();
 
             expect(spy).toHaveBeenCalledWith('resize', handler);
         });
 
         it('does not remove the resize event listener on unmount', () => {
             const spy = jest.spyOn(window, 'removeEventListener');
-            const signaturePad = mount<SignaturePad>(<SignaturePad redrawOnResize width={512} height={512} />);
-            const handler = Reflect.get(signaturePad.instance(), 'callResizeHandler');
+            const instance = React.createRef<SignaturePad>();
 
-            signaturePad.unmount();
+            const { unmount } = render(<SignaturePad ref={instance} redrawOnResize width={512} height={512} />);
+            const handler = Reflect.get(instance.current as SignaturePad, 'callResizeHandler');
+
+            unmount();
 
             expect(spy).not.toHaveBeenCalledWith('resize', handler);
         });

@@ -40,11 +40,10 @@ describe('Component', () => {
 
         it('loads a signature', () => {
             const instance = React.createRef<SignaturePad>();
-            const signaturePad = instance.current;
-
-            if (!signaturePad) return;
 
             render(<SignaturePad ref={instance} redrawOnResize />);
+
+            const signaturePad = instance.current as SignaturePad;
 
             signaturePad.clear();
 
@@ -57,11 +56,10 @@ describe('Component', () => {
 
         it('clears the signature pad', () => {
             const instance = React.createRef<SignaturePad>();
-            const signaturePad = instance.current;
-
-            if (!signaturePad) return;
 
             render(<SignaturePad ref={instance} redrawOnResize />);
+
+            const signaturePad = instance.current as SignaturePad;
 
             signaturePad.fromDataURL(signature);
 
@@ -74,22 +72,20 @@ describe('Component', () => {
 
         it('returns the underlying signature pad instance', () => {
             const instance = React.createRef<SignaturePad>();
-            const signaturePad = instance.current;
-
-            if (!signaturePad) return;
 
             render(<SignaturePad ref={instance} redrawOnResize />);
+
+            const signaturePad = instance.current as SignaturePad;
 
             expect(signaturePad.instance).toBeInstanceOf(SigPad);
         });
 
         it('returns a ref to the underlying HTML canvas element', () => {
             const instance = React.createRef<SignaturePad>();
-            const signaturePad = instance.current;
-
-            if (!signaturePad) return;
 
             render(<SignaturePad ref={instance} redrawOnResize />);
+
+            const signaturePad = instance.current as SignaturePad;
 
             expect(signaturePad.canvas).toBeInstanceOf(Object);
         });
@@ -116,34 +112,30 @@ describe('Component', () => {
 
         it('returns a signature as a data URL', () => {
             const instance = React.createRef<SignaturePad>();
-            const signaturePad = instance.current;
-
-            if (!signaturePad) return;
 
             render(<SignaturePad ref={instance} redrawOnResize />);
+
+            const signaturePad = instance.current as SignaturePad;
 
             expect(signaturePad.toDataURL()).toContain('data:image/png;base64');
         });
 
         it('returns a signature as an array of data points', () => {
             const instance = React.createRef<SignaturePad>();
-            const signaturePad = instance.current;
-
-            if (!signaturePad) return;
 
             render(<SignaturePad ref={instance} redrawOnResize />);
+
+            const signaturePad = instance.current as SignaturePad;
 
             expect(signaturePad.toData()).toHaveLength(0);
         });
 
         it('draws a signature from an array of data points', () => {
             const instance = React.createRef<SignaturePad>();
-            const signaturePad = instance.current;
-
-            if (!signaturePad) return;
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
+            const signaturePad = instance.current as SignaturePad;
             const data = [
                 {
                     dotSize: 0,
@@ -161,12 +153,10 @@ describe('Component', () => {
 
         it('unbinds all event handlers', () => {
             const instance = React.createRef<SignaturePad>();
-            const signaturePad = instance.current;
-
-            if (!signaturePad) return;
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
+            const signaturePad = instance.current as SignaturePad;
             const spy = jest.spyOn(signaturePad.instance, 'off');
 
             signaturePad.off();
@@ -178,12 +168,10 @@ describe('Component', () => {
 
         it('rebinds all event handlers', () => {
             const instance = React.createRef<SignaturePad>();
-            const signaturePad = instance.current;
-
-            if (!signaturePad) return;
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
+            const signaturePad = instance.current as SignaturePad;
             const spy = jest.spyOn(signaturePad.instance, 'on');
 
             signaturePad.on();
@@ -195,12 +183,10 @@ describe('Component', () => {
 
         it('does not redraw a signature by default when the viewport dimensions change', () => {
             const instance = React.createRef<SignaturePad>();
-            const signaturePad = instance.current;
-
-            if (!signaturePad) return;
 
             render(<SignaturePad ref={instance} />);
 
+            const signaturePad = instance.current as SignaturePad;
             const spy = jest.spyOn(signaturePad.instance, 'clear');
 
             scaleCanvas(768, 768);
@@ -213,12 +199,10 @@ describe('Component', () => {
 
         it('redraws a signature when the viewport dimensions change', () => {
             const instance = React.createRef<SignaturePad>();
-            const signaturePad = instance.current;
-
-            if (!signaturePad) return;
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
+            const signaturePad = instance.current as SignaturePad;
             const spy = jest.spyOn(signaturePad.instance, 'toDataURL');
 
             scaleCanvas(768, 768);
@@ -231,12 +215,10 @@ describe('Component', () => {
 
         it('does not redraw a signature when the viewport dimensions have not changed', () => {
             const instance = React.createRef<SignaturePad>();
-            const signaturePad = instance.current;
-
-            if (!signaturePad) return;
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
+            const signaturePad = instance.current as SignaturePad;
             const spy = jest.spyOn(signaturePad.instance, 'toDataURL');
 
             signaturePad.handleResize();

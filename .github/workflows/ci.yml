@@ -26,7 +26,8 @@ jobs:
       run: npm run test
     - name: Upload coverage report
       uses: codecov/codecov-action@v3
-    - name: Set up SonarQube
-      uses: warchant/setup-sonar-scanner@v3
-    - name: Run SonarQube
-      run: sonar-scanner
+    - name: SonarCloud Scan
+      uses: sonarsource/sonarcloud-github-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

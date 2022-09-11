@@ -25,8 +25,10 @@ jobs:
     - name: Test
       run: npm run test
     - name: Upload coverage report
+      if: ${{ matrix.os == ubuntu-latest }}
       uses: codecov/codecov-action@v3
     - name: SonarCloud Scan
+      if: ${{ matrix.os == ubuntu-latest }}
       uses: sonarsource/sonarcloud-github-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

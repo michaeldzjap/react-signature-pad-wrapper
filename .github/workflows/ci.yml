@@ -26,3 +26,7 @@ jobs:
       run: npm run test
     - name: Upload coverage report
       uses: codecov/codecov-action@v3
+    - name: Set up SonarQube
+      uses: warchant/setup-sonar-scanner@v3
+    - name: Run SonarQube
+      run: sonar-scanner

@@ -43,13 +43,15 @@ describe('Component', () => {
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
-            instance.current!.clear();
+            const signaturePad = instance.current as SignaturePad;
 
-            expect(instance.current!.isEmpty()).toBeTruthy();
+            signaturePad.clear();
 
-            instance.current!.fromDataURL(signature);
+            expect(signaturePad.isEmpty()).toBeTruthy();
 
-            expect(instance.current!.isEmpty()).toBeFalsy();
+            signaturePad.fromDataURL(signature);
+
+            expect(signaturePad.isEmpty()).toBeFalsy();
         });
 
         it('clears the signature pad', () => {
@@ -57,13 +59,15 @@ describe('Component', () => {
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
-            instance.current!.fromDataURL(signature);
+            const signaturePad = instance.current as SignaturePad;
 
-            expect(instance.current!.isEmpty()).toBeFalsy();
+            signaturePad.fromDataURL(signature);
 
-            instance.current!.clear();
+            expect(signaturePad.isEmpty()).toBeFalsy();
 
-            expect(instance.current!.isEmpty()).toBeTruthy();
+            signaturePad.clear();
+
+            expect(signaturePad.isEmpty()).toBeTruthy();
         });
 
         it('returns the underlying signature pad instance', () => {
@@ -71,7 +75,9 @@ describe('Component', () => {
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
-            expect(instance.current!.instance).toBeInstanceOf(SigPad);
+            const signaturePad = instance.current as SignaturePad;
+
+            expect(signaturePad.instance).toBeInstanceOf(SigPad);
         });
 
         it('returns a ref to the underlying HTML canvas element', () => {
@@ -79,7 +85,9 @@ describe('Component', () => {
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
-            expect(instance.current!.canvas).toBeInstanceOf(Object);
+            const signaturePad = instance.current as SignaturePad;
+
+            expect(signaturePad.canvas).toBeInstanceOf(Object);
         });
 
         [
@@ -107,7 +115,9 @@ describe('Component', () => {
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
-            expect(instance.current!.toDataURL()).toContain('data:image/png;base64');
+            const signaturePad = instance.current as SignaturePad;
+
+            expect(signaturePad.toDataURL()).toContain('data:image/png;base64');
         });
 
         it('returns a signature as an array of data points', () => {
@@ -115,7 +125,9 @@ describe('Component', () => {
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
-            expect(instance.current!.toData()).toHaveLength(0);
+            const signaturePad = instance.current as SignaturePad;
+
+            expect(signaturePad.toData()).toHaveLength(0);
         });
 
         it('draws a signature from an array of data points', () => {
@@ -123,6 +135,7 @@ describe('Component', () => {
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
+            const signaturePad = instance.current as SignaturePad;
             const data = [
                 {
                     dotSize: 0,
@@ -133,9 +146,9 @@ describe('Component', () => {
                 },
             ];
 
-            instance.current!.fromData(data);
+            signaturePad.fromData(data);
 
-            expect(instance.current!.toData()).toStrictEqual(data);
+            expect(signaturePad.toData()).toStrictEqual(data);
         });
 
         it('unbinds all event handlers', () => {
@@ -143,9 +156,10 @@ describe('Component', () => {
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
-            const spy = jest.spyOn(instance.current!.instance, 'off');
+            const signaturePad = instance.current as SignaturePad;
+            const spy = jest.spyOn(signaturePad.instance, 'off');
 
-            instance.current!.off();
+            signaturePad.off();
 
             expect(spy).toHaveBeenCalled();
 
@@ -157,9 +171,10 @@ describe('Component', () => {
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
-            const spy = jest.spyOn(instance.current!.instance, 'on');
+            const signaturePad = instance.current as SignaturePad;
+            const spy = jest.spyOn(signaturePad.instance, 'on');
 
-            instance.current!.on();
+            signaturePad.on();
 
             expect(spy).toHaveBeenCalled();
 
@@ -171,11 +186,12 @@ describe('Component', () => {
 
             render(<SignaturePad ref={instance} />);
 
-            const spy = jest.spyOn(instance.current!.instance, 'clear');
+            const signaturePad = instance.current as SignaturePad;
+            const spy = jest.spyOn(signaturePad.instance, 'clear');
 
             scaleCanvas(768, 768);
             act(() => {
-                instance.current!.handleResize();
+                signaturePad.handleResize();
             });
 
             expect(spy).toHaveBeenCalled();
@@ -186,11 +202,12 @@ describe('Component', () => {
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
-            const spy = jest.spyOn(instance.current!.instance, 'toDataURL');
+            const signaturePad = instance.current as SignaturePad;
+            const spy = jest.spyOn(signaturePad.instance, 'toDataURL');
 
             scaleCanvas(768, 768);
             act(() => {
-                instance.current!.handleResize();
+                signaturePad.handleResize();
             });
 
             expect(spy).toHaveBeenCalled();
@@ -201,9 +218,10 @@ describe('Component', () => {
 
             render(<SignaturePad ref={instance} redrawOnResize />);
 
-            const spy = jest.spyOn(instance.current!.instance, 'toDataURL');
+            const signaturePad = instance.current as SignaturePad;
+            const spy = jest.spyOn(signaturePad.instance, 'toDataURL');
 
-            instance.current!.handleResize();
+            signaturePad.handleResize();
 
             expect(spy).not.toHaveBeenCalled();
         });

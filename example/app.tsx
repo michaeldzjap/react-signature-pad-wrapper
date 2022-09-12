@@ -3,4 +3,8 @@ import { createRoot } from 'react-dom/client';
 
 import Layout from './Layout';
 
-createRoot(document.getElementById('root')!).render(<Layout />);
+const element = document.getElementById('root');
+
+if (element) {
+    createRoot(element).render(<Layout />);
+}

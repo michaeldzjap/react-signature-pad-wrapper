@@ -142,6 +142,7 @@ describe('Component', () => {
                     maxWidth: 2.5,
                     minWidth: 0.5,
                     penColor: 'black',
+                    velocityFilterWeight: 0.7,
                     points: [{ pressure: 0.5, time: 1641476147709, x: 100, y: 100 }],
                 },
             ];

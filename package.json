@@ -9,13 +9,13 @@
   ],
   "types": "dist/index.d.ts",
   "scripts": {
-    "test": "cross-env NODE_ENV=test ./node_modules/.bin/jest",
-    "development": "cross-env NODE_ENV=local ./node_modules/.bin/rollup --config rollup.config.ts --configPlugin typescript",
+    "test": "cross-env NODE_ENV=test npx jest",
+    "development": "cross-env NODE_ENV=local npx rollup --config rollup.config.ts --configPlugin typescript",
     "dev": "npm run development",
-    "production": "cross-env NODE_ENV=production ./node_modules/.bin/rollup --config rollup.config.ts --configPlugin typescript",
+    "production": "cross-env NODE_ENV=production npx rollup --config rollup.config.ts --configPlugin typescript",
     "prod": "npm run production",
-    "watch": "cross-env NODE_ENV=local ./node_modules/.bin/rollup --config rollup.config.ts --configPlugin typescript --watch",
-    "lint": "./node_modules/.bin/eslint --ext .tsx ./",
+    "watch": "cross-env NODE_ENV=local npx rollup --config rollup.config.ts --configPlugin typescript --watch",
+    "lint": "npx eslint --ext .tsx ./",
     "clean": "rm -rf dist"
   },
   "keywords": [

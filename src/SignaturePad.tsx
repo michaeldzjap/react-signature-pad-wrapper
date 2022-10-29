@@ -257,11 +257,15 @@ class SignaturePad extends React.PureComponent<Props, State> {
     /**
      * Draw a signature from a data URL.
      *
-     * @param {string} base64String
+     * @param {string} dataUrl
+     * @param {object} options
      * @return {void}
      */
-    fromDataURL(base64String: string): void {
-        this.signaturePad.fromDataURL(base64String);
+    fromDataURL(
+        dataUrl: string,
+        options: Partial<{ ratio: number; width: number; height: number; xOffset: number; yOffset: number }> = {},
+    ): void {
+        this.signaturePad.fromDataURL(dataUrl, options);
     }
 
     /**

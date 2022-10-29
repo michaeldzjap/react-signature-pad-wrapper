@@ -1,8 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
-// import eslint from '@rollup/plugin-eslint';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import { terser } from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 
 import pkg from './package.json' assert { type: 'json' };
 
@@ -30,7 +29,6 @@ export default {
         include: 'src/**',
     },
     plugins: [
-        // eslint(),
         typescript({
             sourceMap: local,
         }),

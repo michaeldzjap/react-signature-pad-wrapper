@@ -1,5 +1,5 @@
 import * as React from 'react';
-import SigPad, { Options, PointGroup } from 'signature_pad';
+import SigPad, { Options, PointGroup, ToSVGOptions } from 'signature_pad';
 import { debounce } from 'throttle-debounce';
 
 type Props = {
@@ -239,7 +239,7 @@ class SignaturePad extends React.PureComponent<Props, State> {
     /**
      * Determine if the canvas is empty.
      *
-     * @return {Boolean}
+     * @return {boolean}
      */
     isEmpty(): boolean {
         return this.signaturePad.isEmpty();
@@ -277,6 +277,16 @@ class SignaturePad extends React.PureComponent<Props, State> {
      */
     toDataURL(type?: string, encoderOptions?: number): string {
         return this.signaturePad.toDataURL(type, encoderOptions);
+    }
+
+    /**
+     * Get the signature data as an SVG string without converting to base64.
+     *
+     * @param {?ToSVGOptions} svgOptions
+     * @return {string}
+     */
+    toSVG(svgOptions?: ToSVGOptions): string {
+        return this.signaturePad.toSVG(svgOptions);
     }
 
     /**

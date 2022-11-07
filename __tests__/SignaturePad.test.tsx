@@ -120,6 +120,16 @@ describe('Component', () => {
             expect(signaturePad.toDataURL()).toContain('data:image/png;base64');
         });
 
+        it('returns a signature as an SVG string', () => {
+            const instance = React.createRef<SignaturePad>();
+
+            render(<SignaturePad ref={instance} redrawOnResize />);
+
+            const signaturePad = instance.current as SignaturePad;
+
+            expect(signaturePad.toSVG()).toContain('<svg');
+        });
+
         it('returns a signature as an array of data points', () => {
             const instance = React.createRef<SignaturePad>();
 

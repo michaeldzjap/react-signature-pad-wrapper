@@ -15,7 +15,7 @@
     "production": "cross-env NODE_ENV=production npx rollup --config rollup.config.ts --configPlugin typescript",
     "prod": "npm run production",
     "watch": "cross-env NODE_ENV=local npx rollup --config rollup.config.ts --configPlugin typescript --watch",
-    "lint": "npx eslint --ext .tsx ./",
+    "lint": "npx eslint --ext .tsx,.ts ./",
     "clean": "rm -rf dist"
   },
   "keywords": [
@@ -74,6 +74,6 @@
     "signature_pad": "^4.0.0"
   },
   "lint-staged": {
-    "*.ts": "eslint --cache --fix"
+    "*.ts?(x)": "eslint --cache --fix"
   }
 }

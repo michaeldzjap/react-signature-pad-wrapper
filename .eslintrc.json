@@ -2,9 +2,7 @@
   "root": true,
   "env": {
     "browser": true,
-    "node": true,
-    "es6": true,
-    "jest/globals": true
+    "es2022": true
   },
   "settings": {
     "react": {
@@ -19,20 +17,11 @@
       "jsx": true
     }
   },
-  "plugins": [
-    "@typescript-eslint",
-    "import",
-    "react",
-    "jest",
-    "jest-dom"
-  ],
   "extends": [
     "eslint:recommended",
+    "plugin:import/recommended",
     "plugin:react/recommended",
-    "plugin:jest/recommended",
-    "plugin:jest-dom/recommended",
     "plugin:eslint-comments/recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended"
   ],
   "rules": {
@@ -53,5 +42,34 @@
     "import/no-webpack-loader-syntax": "error",
     "react/jsx-pascal-case": "error",
     "react/style-prop-object": "error"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["jest.config.js", "example/webpack.config.js"],
+      "env": {
+        "node": true
+      }
+    },
+    {
+      "files": ["*.ts", "*.tsx"],
+      "parser": "@typescript-eslint/parser",
+      "plugins": [
+        "@typescript-eslint"
+      ],
+      "extends": [
+        "plugin:import/typescript",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "settings": {
+        "import/parsers": {
+          "@typescript-eslint/parser": [".ts", ".tsx"]
+        },
+        "import/resolver": {
+          "typescript": {
+            "alwaysTryTypes": true
+          }
+        }
+      }
+    }
+  ]
 }

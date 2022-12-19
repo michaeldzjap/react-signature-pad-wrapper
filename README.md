@@ -1,6 +1,6 @@
 ![NPM Version](https://img.shields.io/npm/v/react-signature-pad-wrapper.svg?branch=master)
 ![downloads](https://img.shields.io/npm/dt/react-signature-pad-wrapper.svg)
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/michaeldzjap/react-signature-pad-wrapper/CI)
+![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/michaeldzjap/react-signature-pad-wrapper/ci.yml?branch=master)
 ![dependencies](https://img.shields.io/librariesio/release/npm/react-signature-pad-wrapper)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![codecov](https://codecov.io/gh/michaeldzjap/react-signature-pad-wrapper/branch/master/graph/badge.svg)](https://codecov.io/gh/michaeldzjap/react-signature-pad-wrapper)

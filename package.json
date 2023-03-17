@@ -41,7 +41,7 @@
     "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-typescript": "^11.0.0",
     "@testing-library/jest-dom": "^5.16.4",
-    "@testing-library/react": "^13.2.0",
+    "@testing-library/react": "^14.0.0",
     "@types/jest": "^29.0.0",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
@@ -69,7 +69,7 @@
     "rollup": "^3.2.0",
     "throttle-debounce": "^5.0.0",
     "ts-jest": "^29.0.0",
-    "typescript": "^4.4.3"
+    "typescript": "^5.0.2"
   },
   "dependencies": {
     "signature_pad": "^4.0.0"

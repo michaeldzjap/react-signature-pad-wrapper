@@ -146,6 +146,8 @@ describe('Component', () => {
             render(<SignaturePad ref={instance} redrawOnResize />);
 
             const signaturePad = instance.current as SignaturePad;
+            const canvas = signaturePad.canvas.current as HTMLCanvasElement;
+            const context = canvas.getContext('2d') as CanvasRenderingContext2D;
             const data = [
                 {
                     dotSize: 0,
@@ -153,6 +155,7 @@ describe('Component', () => {
                     minWidth: 0.5,
                     penColor: 'black',
                     velocityFilterWeight: 0.7,
+                    compositeOperation: context.globalCompositeOperation,
                     points: [{ pressure: 0.5, time: 1641476147709, x: 100, y: 100 }],
                 },
             ];

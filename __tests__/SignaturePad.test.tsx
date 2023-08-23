@@ -217,6 +217,9 @@ describe('Component', () => {
             render(<SignaturePad ref={instance} redrawOnResize />);
 
             const signaturePad = instance.current as SignaturePad;
+
+            signaturePad.fromDataURL(signature);
+
             const spy = jest.spyOn(signaturePad.instance, 'toDataURL');
 
             scaleCanvas(768, 768);
@@ -233,11 +236,28 @@ describe('Component', () => {
             render(<SignaturePad ref={instance} redrawOnResize />);
 
             const signaturePad = instance.current as SignaturePad;
+
+            signaturePad.fromDataURL(signature);
+
             const spy = jest.spyOn(signaturePad.instance, 'toDataURL');
 
             signaturePad.handleResize();
 
             expect(spy).not.toHaveBeenCalled();
+        });
+
+        it('is empty after redraw if was empty', () => {
+            const instance = React.createRef<SignaturePad>();
+
+            render(<SignaturePad ref={instance} redrawOnResize />);
+
+            const signaturePad = instance.current as SignaturePad;
+
+            expect(signaturePad.isEmpty()).toBeTruthy();
+
+            scaleCanvas(768, 768);
+
+            expect(signaturePad.isEmpty()).toBeTruthy();
         });
 
         it('does not add the resize event listener on mount', () => {

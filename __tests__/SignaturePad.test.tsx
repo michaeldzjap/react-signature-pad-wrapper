@@ -246,7 +246,7 @@ describe('Component', () => {
             expect(spy).not.toHaveBeenCalled();
         });
 
-        it('is empty after redraw if was empty', () => {
+        it('does not redraw a signature when the canvas is empty', () => {
             const instance = React.createRef<SignaturePad>();
 
             render(<SignaturePad ref={instance} redrawOnResize />);

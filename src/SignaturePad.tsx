@@ -357,7 +357,7 @@ class SignaturePad extends React.PureComponent<Props, State> {
 
         let data;
 
-        if (this.props.redrawOnResize && this.signaturePad) {
+        if (this.props.redrawOnResize && this.signaturePad && !this.signaturePad.isEmpty()) {
             data = this.signaturePad.toDataURL();
         }
 

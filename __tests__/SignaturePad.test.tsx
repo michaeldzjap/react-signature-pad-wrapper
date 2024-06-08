@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { act } from 'react-dom/test-utils';
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import SigPad from 'signature_pad';
@@ -204,7 +203,7 @@ describe('Component', () => {
             const spy = jest.spyOn(signaturePad.instance, 'clear');
 
             scaleCanvas(768, 768);
-            act(() => {
+            React.act(() => {
                 signaturePad.handleResize();
             });
 
@@ -223,7 +222,7 @@ describe('Component', () => {
             const spy = jest.spyOn(signaturePad.instance, 'toDataURL');
 
             scaleCanvas(768, 768);
-            act(() => {
+            React.act(() => {
                 signaturePad.handleResize();
             });
 

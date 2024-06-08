@@ -71,7 +71,7 @@
     "typescript": "^5.0.2"
   },
   "dependencies": {
-    "signature_pad": "^4.0.0",
+    "signature_pad": "^5.0.1",
     "throttle-debounce": "^5.0.0"
   },
   "lint-staged": {

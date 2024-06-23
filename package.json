@@ -1,6 +1,6 @@
 {
   "name": "react-signature-pad-wrapper",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "A React component wrapper for signature_pad",
   "main": "dist/react-signature-pad-wrapper.js",
   "module": "dist/react-signature-pad-wrapper.es.js",

@@ -10,11 +10,11 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "cross-env NODE_ENV=test npx jest",
-    "development": "cross-env NODE_ENV=local npx rollup --config rollup.config.ts --configPlugin typescript",
+    "development": "cross-env NODE_ENV=local npx rollup --bundleConfigAsCjs --config rollup.config.ts --configPlugin typescript",
     "dev": "npm run development",
-    "production": "cross-env NODE_ENV=production npx rollup --config rollup.config.ts --configPlugin typescript",
+    "production": "cross-env NODE_ENV=production npx rollup --bundleConfigAsCjs --config rollup.config.ts --configPlugin typescript",
     "prod": "npm run production",
-    "watch": "cross-env NODE_ENV=local npx rollup --config rollup.config.ts --configPlugin typescript --watch",
+    "watch": "cross-env NODE_ENV=local npx rollup --bundleConfigAsCjs --config rollup.config.ts --configPlugin typescript --watch",
     "lint": "npx eslint --ext .tsx,.ts ./",
     "clean": "rm -rf dist"
   },

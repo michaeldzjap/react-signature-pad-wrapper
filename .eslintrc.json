@@ -25,6 +25,12 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
+    "@typescript-eslint/no-var-requires": [
+      "error",
+      {
+        "allow": ["/package\\.json$"]
+      }
+    ],
     "require-jsdoc": [
       "error",
       {

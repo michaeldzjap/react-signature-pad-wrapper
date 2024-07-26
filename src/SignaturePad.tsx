@@ -7,6 +7,7 @@ type Props = {
     height?: number;
     options?: Options;
     canvasProps?: { [key: string]: string | { [key: string]: string } };
+    ref?: React.RefObject<SignaturePad>;
 } & DefaultProps;
 
 type DefaultProps = {

@@ -3,8 +3,7 @@ import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import terser from '@rollup/plugin-terser';
 
-import pkg from './package.json' assert { type: 'json' };
-
+const pkg = require('./package.json');
 const local = process.env.NODE_ENV === 'local';
 
 export default {

@@ -1,10 +1,15 @@
-/** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
-module.exports = {
+/** @type {import('jest').Config} */
+export default {
     testEnvironment: 'jsdom',
     testMatch: ['**/__tests__/**/*.[jt]s?(x)'],
     testPathIgnorePatterns: ['<rootDir>/__tests__/shim.ts', '<rootDir>/__tests__/helpers/', '<rootDir>/node_modules/'],
     transform: {
-        '\\.[jt]sx?$': ['ts-jest', { tsconfig: 'tsconfig.test.json' }],
+        '\\.[jt]sx?$': [
+            'ts-jest',
+            {
+                tsconfig: 'tsconfig.test.json',
+            },
+        ],
     },
     collectCoverage: true,
 };

@@ -41,7 +41,6 @@ class Layout extends React.PureComponent {
         }
 
         if (signaturePad.isEmpty()) {
-            // eslint-disable-next-line no-alert
             alert('Please provide a signature first.');
         } else {
             window.open(signaturePad.toDataURL());

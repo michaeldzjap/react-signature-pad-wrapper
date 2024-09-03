@@ -2,20 +2,21 @@
   "name": "react-signature-pad-wrapper",
   "version": "4.0.2",
   "description": "A React component wrapper for signature_pad",
-  "main": "dist/react-signature-pad-wrapper.js",
-  "module": "dist/react-signature-pad-wrapper.es.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "files": [
     "dist"
   ],
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "cross-env NODE_ENV=test npx jest",
-    "development": "cross-env NODE_ENV=local npx rollup --bundleConfigAsCjs --config rollup.config.ts --configPlugin typescript",
+    "lint": "npx eslint .",
+    "format": "npx prettier . --write",
+    "development": "cross-env NODE_ENV=local npx rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "dev": "npm run development",
-    "production": "cross-env NODE_ENV=production npx rollup --bundleConfigAsCjs --config rollup.config.ts --configPlugin typescript",
+    "production": "cross-env NODE_ENV=production npx rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript",
     "prod": "npm run production",
-    "watch": "cross-env NODE_ENV=local npx rollup --bundleConfigAsCjs --config rollup.config.ts --configPlugin typescript --watch",
-    "lint": "npx eslint --ext .tsx,.ts ./",
+    "watch": "cross-env NODE_ENV=local npx rollup --config rollup.config.ts --configPlugin @rollup/plugin-typescript --watch",
     "clean": "rm -rf dist"
   },
   "keywords": [
@@ -36,25 +37,22 @@
     "react-dom": "17 - 18"
   },
   "devDependencies": {
+    "@eslint/js": "^9.9.1",
     "@rollup/plugin-commonjs": "^26.0.1",
     "@rollup/plugin-node-resolve": "^15.0.0",
     "@rollup/plugin-terser": "^0.4.0",
     "@rollup/plugin-typescript": "^11.0.0",
     "@testing-library/jest-dom": "^6.1.2",
     "@testing-library/react": "^16.0.0",
+    "@types/eslint__js": "^8.42.3",
     "@types/jest": "^29.0.0",
     "@types/react": "^18.0.8",
     "@types/react-dom": "^18.0.3",
     "@types/throttle-debounce": "^5.0.0",
-    "@typescript-eslint/eslint-plugin": "^7.7.0",
-    "@typescript-eslint/parser": "^7.7.0",
     "canvas": "^2.9.0",
     "cross-env": "^7.0.3",
-    "eslint": "^8.0.1",
+    "eslint": "^9.9.1",
     "eslint-config-prettier": "^9.0.0",
-    "eslint-import-resolver-typescript": "^3.5.2",
-    "eslint-plugin-eslint-comments": "^3.2.0",
-    "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-jest": "^28.2.0",
     "eslint-plugin-jest-dom": "^5.0.1",
     "eslint-plugin-prettier": "^5.0.0",
@@ -68,13 +66,18 @@
     "react-dom": "^18.1.0",
     "rollup": "^4.5.0",
     "ts-jest": "^29.0.0",
-    "typescript": "^5.0.2"
+    "typescript": "^5.0.2",
+    "typescript-eslint": "^8.4.0"
   },
   "dependencies": {
+    "prop-types": "^15.8.1",
     "signature_pad": "^5.0.1",
     "throttle-debounce": "^5.0.0"
   },
   "lint-staged": {
-    "*.ts?(x)": "eslint --cache --fix"
+    "*.ts?(x)": [
+      "eslint --cache --fix",
+      "prettier --write --ignore-unknown"
+    ]
   }
 }

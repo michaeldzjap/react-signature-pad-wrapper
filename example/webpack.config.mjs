@@ -1,7 +1,10 @@
-/* eslint-disable-next-line @typescript-eslint/no-var-requires */
-const path = require('path');
+import { dirname, resolve } from 'path';
+import { fileURLToPath } from 'url';
 
-module.exports = {
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+export default {
     mode: 'development',
     entry: {
         vendor: ['react', 'react-dom'],
@@ -12,7 +15,7 @@ module.exports = {
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, 'dist'),
+        path: resolve(__dirname, 'dist'),
         devtoolModuleFilenameTemplate: 'webpack:///[absolute-resource-path]',
     },
     module: {

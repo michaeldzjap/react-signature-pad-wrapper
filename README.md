@@ -8,23 +8,29 @@
 [![License](https://img.shields.io/npm/l/react-signature-pad-wrapper.svg)](https://github.com/michaeldzjap/react-signature-pad-wrapper/blob/master/LICENSE)
 
 # react-signature-pad-wrapper
+
 A React wrapper for [signature pad](https://github.com/szimek/signature_pad).
 
 ## Installation
+
 This package is available through npm:
+
 ```
 npm install --save react-signature-pad-wrapper
 ```
 
 ## Usage
-This package implements exactly the same interface as the original *signature_pad* package and adds a couple of extra features that make responsive behaviour a little easier to deal with. For a complete overview of the available options and callables see the documentation for [signature pad](https://github.com/szimek/signature_pad).
+
+This package implements exactly the same interface as the original _signature_pad_ package and adds a couple of extra features that make responsive behaviour a little easier to deal with. For a complete overview of the available options and callables see the documentation for [signature pad](https://github.com/szimek/signature_pad).
 
 Import the component like (ES6):
+
 ```javascript
-import SignaturePad from 'react-signature-pad-wrapper'
+import SignaturePad from 'react-signature-pad-wrapper';
 ```
 
 Options may be passed as a component property during initialization:
+
 ```javascript
 ...
 render() {
@@ -34,6 +40,7 @@ render() {
 ```
 
 or they can be set during runtime:
+
 ```javascript
 ...
 render() {
@@ -41,7 +48,9 @@ render() {
 }
 ...
 ```
+
 then from somewhere else in the code (assuming the ref is defined):
+
 ```javascript
 // Call an instance method
 this.signaturePad.clear();
@@ -54,7 +63,9 @@ this.signaturePad.penColor = 'rgb(66, 133, 244)';
 ```
 
 ## Responsiveness
+
 The HTML canvas object sucks when it comes to responsiveness. The approach taken with this plugin is to use a fixed size canvas when a height and width (in pixels) is explicitly passed in as a component property:
+
 ```javascript
 ...
 render() {
@@ -64,6 +75,7 @@ render() {
 ```
 
 If you want the component to be responsive, simply ommit the width and height property:
+
 ```javascript
 ...
 render() {
@@ -71,9 +83,11 @@ render() {
 }
 ...
 ```
+
 The canvas width and height will now be updated whenever the window is resized (using a debounced handler). Changing the width and height properties of a HTML canvas object will erase its current content.
 
 If you'd like to keep what is currently drawn on the canvas you can pass a `redrawOnResize` property to the component and set it to `true` (`redrawOnResize` is `false` by default):
+
 ```javascript
 ...
 render() {
@@ -81,11 +95,15 @@ render() {
 }
 ...
 ```
+
 This will save the current canvas content to a base64 data string before performing the resize operation and load it in the canvas right after the resize operation finishes. **Note**: the repeated saving and loading of image data when resizing often will degrade the quality rapidly. There is no easy solution around this unfortunately. Resampling the image data is imagined to help significantly, but this is a rather costly operation in general and not something you would ideally do with JavaScript in the browser on every resize event (even if throttled/debounced).
 
 ## Example
+
 This project includes a simple example that demonstrates a responsive sketch pad. To build the example:
+
 ```shell
 cd example && npm run build
 ```
+
 Then open `example/index.html` in a browser of your choice.

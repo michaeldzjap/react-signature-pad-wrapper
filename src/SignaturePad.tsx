@@ -1,5 +1,6 @@
 import * as React from 'react';
-import SigPad, { Options, PointGroup, ToSVGOptions } from 'signature_pad';
+import * as PropTypes from 'prop-types';
+import SigPad, { type Options, type PointGroup, type ToSVGOptions } from 'signature_pad';
 import { debounce } from 'throttle-debounce';
 
 type Props = {
@@ -27,6 +28,16 @@ type State = {
  */
 class SignaturePad extends React.PureComponent<Props, State> {
     static displayName = 'react-signature-pad-wrapper';
+
+    static propTypes = {
+        width: PropTypes.number,
+        height: PropTypes.number,
+        options: PropTypes.object,
+        canvasProps: PropTypes.object,
+        ref: PropTypes.object,
+        redrawOnResize: PropTypes.bool.isRequired,
+        debounceInterval: PropTypes.number.isRequired,
+    };
 
     static defaultProps: DefaultProps = {
         redrawOnResize: false,

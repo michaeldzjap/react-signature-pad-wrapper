@@ -12,12 +12,6 @@
     "outDir": "./dist",
     "jsx": "react"
   },
-  "include": [
-    "**/*"
-  ],
-  "exclude": [
-    "node_modules",
-    "dist",
-    "example"
-  ]
+  "include": ["**/*"],
+  "exclude": ["node_modules", "dist", "example"]
 }

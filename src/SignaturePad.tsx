@@ -8,7 +8,6 @@ type Props = {
     height?: number;
     options?: Options;
     canvasProps?: { [key: string]: string | { [key: string]: string } };
-    ref?: React.RefObject<SignaturePad>;
 } & DefaultProps;
 
 type DefaultProps = {
@@ -34,7 +33,6 @@ class SignaturePad extends React.PureComponent<Props, State> {
         height: PropTypes.number,
         options: PropTypes.object,
         canvasProps: PropTypes.object,
-        ref: PropTypes.object,
         redrawOnResize: PropTypes.bool.isRequired,
         debounceInterval: PropTypes.number.isRequired,
     };

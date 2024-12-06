@@ -109,7 +109,7 @@ class SignaturePad extends React.PureComponent<Props, State> {
      *
      * @return {Object}
      */
-    get canvas(): React.RefObject<HTMLCanvasElement> {
+    get canvas(): React.RefObject<HTMLCanvasElement | null> {
         return this.canvasRef;
     }
 

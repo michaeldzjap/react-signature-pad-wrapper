@@ -33,8 +33,8 @@
     "url": "https://github.com/michaeldzjap/react-signature-pad-wrapper/issues"
   },
   "peerDependencies": {
-    "react": "17 - 18",
-    "react-dom": "17 - 18"
+    "react": "17 - 19",
+    "react-dom": "17 - 19"
   },
   "devDependencies": {
     "@eslint/js": "^9.9.1",
@@ -46,8 +46,9 @@
     "@testing-library/react": "^16.0.0",
     "@types/eslint__js": "^8.42.3",
     "@types/jest": "^29.0.0",
-    "@types/react": "^18.0.8",
-    "@types/react-dom": "^18.0.3",
+    "@types/prop-types": "^15.7.14",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "@types/throttle-debounce": "^5.0.0",
     "canvas": "^2.9.0",
     "cross-env": "^7.0.3",
@@ -62,8 +63,8 @@
     "jest-environment-jsdom": "^29.0.3",
     "lint-staged": "^15.1.0",
     "prettier": "^3.0.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "rollup": "^4.5.0",
     "ts-jest": "^29.0.0",
     "typescript": "^5.0.2",

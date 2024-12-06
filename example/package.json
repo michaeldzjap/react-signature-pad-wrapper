@@ -17,19 +17,19 @@
     "signature_pad"
   ],
   "author": "Michael Dzjaparidze",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/michaeldzjap/react-signature-pad-wrapper/issues"
   },
   "homepage": "https://github.com/michaeldzjap/react-signature-pad-wrapper#readme",
   "dependencies": {
     "bulma": "^1.0.0",
-    "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.0.8",
-    "@types/react-dom": "^18.0.3",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
     "ts-loader": "^9.2.6",
     "typescript": "^5.0.2",
     "webpack": "^5.53.0",

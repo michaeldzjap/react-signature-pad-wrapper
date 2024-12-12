@@ -103,7 +103,8 @@ This will save the current canvas content to a base64 data string before perform
 This project includes a simple example that demonstrates a responsive sketch pad. To build the example:
 
 ```shell
-cd example && npm run build
+npm install
+cd example && npm install && npm run build
 ```
 
 Then open `example/index.html` in a browser of your choice.

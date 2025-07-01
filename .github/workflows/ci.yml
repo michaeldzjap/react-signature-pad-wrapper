@@ -27,9 +27,8 @@ jobs:
       - name: Upload coverage report
         if: ${{ matrix.os == 'ubuntu-latest' && matrix.node-version == '21.x' }}
         uses: codecov/codecov-action@v3
-      - name: SonarCloud Scan
+      - name: SonarQube Scan
         if: ${{ matrix.os == 'ubuntu-latest' && matrix.node-version == '21.x' }}
-        uses: sonarsource/sonarcloud-github-action@master
+        uses: SonarSource/sonarqube-scan-action@v4
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}

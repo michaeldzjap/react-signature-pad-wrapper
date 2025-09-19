@@ -51,7 +51,7 @@
     "@types/react-dom": "^19.0.0",
     "@types/throttle-debounce": "^5.0.0",
     "canvas": "^3.1.2",
-    "cross-env": "^7.0.3",
+    "cross-env": "^10.0.0",
     "eslint": "^9.9.1",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-jest": "^29.0.1",

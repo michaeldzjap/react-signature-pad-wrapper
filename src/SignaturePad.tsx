@@ -33,20 +33,20 @@ class SignaturePad extends React.PureComponent<Props, State> {
         height: PropTypes.number,
         options: PropTypes.object,
         canvasProps: PropTypes.object,
-        redrawOnResize: PropTypes.bool.isRequired,
-        debounceInterval: PropTypes.number.isRequired,
+        redrawOnResize: PropTypes.bool,
+        debounceInterval: PropTypes.number,
     };
 
-    static defaultProps: DefaultProps = {
+    static readonly defaultProps: DefaultProps = {
         redrawOnResize: false,
         debounceInterval: 150,
     };
 
-    private canvasRef = React.createRef<HTMLCanvasElement>();
+    private readonly canvasRef = React.createRef<HTMLCanvasElement>();
 
     private signaturePad!: SigPad;
 
-    private callResizeHandler!: debounce<() => void>;
+    private readonly callResizeHandler!: debounce<() => void>;
 
     /**
      * Create a new signature pad.

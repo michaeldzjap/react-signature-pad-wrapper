@@ -119,6 +119,16 @@ describe('Component', () => {
             expect(signaturePad.toDataURL()).toContain('data:image/png;base64');
         });
 
+        it('returns a signature as an SVG data URL', () => {
+            const instance = React.createRef<SignaturePad>();
+
+            render(<SignaturePad ref={instance} redrawOnResize />);
+
+            const signaturePad = instance.current as SignaturePad;
+
+            expect(signaturePad.toSvgDataUrl({ includeDataUrl: true })).toContain('data:image/svg+xml;base64');
+        });
+
         it('returns a signature as an SVG string', () => {
             const instance = React.createRef<SignaturePad>();
 
@@ -200,14 +210,14 @@ describe('Component', () => {
             render(<SignaturePad ref={instance} />);
 
             const signaturePad = instance.current as SignaturePad;
-            const spy = jest.spyOn(signaturePad.instance, 'clear');
+            const spy = jest.spyOn(signaturePad.instance, 'redraw');
 
             scaleCanvas(768, 768);
             React.act(() => {
                 signaturePad.handleResize();
             });
 
-            expect(spy).toHaveBeenCalled();
+            expect(spy).not.toHaveBeenCalled();
         });
 
         it('redraws a signature when the viewport dimensions change', () => {
@@ -219,7 +229,7 @@ describe('Component', () => {
 
             signaturePad.fromDataURL(signature);
 
-            const spy = jest.spyOn(signaturePad.instance, 'toDataURL');
+            const spy = jest.spyOn(signaturePad.instance, 'redraw');
 
             scaleCanvas(768, 768);
             React.act(() => {
@@ -238,7 +248,7 @@ describe('Component', () => {
 
             signaturePad.fromDataURL(signature);
 
-            const spy = jest.spyOn(signaturePad.instance, 'toDataURL');
+            const spy = jest.spyOn(signaturePad.instance, 'redraw');
 
             signaturePad.handleResize();
 

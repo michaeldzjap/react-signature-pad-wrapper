@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
-import SigPad, { type Options, type PointGroup, type ToSVGOptions } from 'signature_pad';
+import SigPad, { type FromDataUrlOptions, type Options, type PointGroup, type ToSVGOptions } from 'signature_pad';
 import { debounce } from 'throttle-debounce';
 
 type Props = {
@@ -251,7 +251,7 @@ class SignaturePad extends React.PureComponent<Props, State> {
      *
      * @return {boolean}
      */
-    isEmpty(): boolean {
+    public isEmpty(): boolean {
         return this.signaturePad.isEmpty();
     }
 
@@ -260,8 +260,17 @@ class SignaturePad extends React.PureComponent<Props, State> {
      *
      * @return {void}
      */
-    clear(): void {
+    public clear(): void {
         this.signaturePad.clear();
+    }
+
+    /**
+     * Redraw the signature.
+     * 
+     * @return {void}
+     */
+    public redraw(): void {
+        this.signaturePad.redraw();
     }
 
     /**
@@ -271,10 +280,7 @@ class SignaturePad extends React.PureComponent<Props, State> {
      * @param {object} options
      * @return {void}
      */
-    fromDataURL(
-        dataUrl: string,
-        options: Partial<{ ratio: number; width: number; height: number; xOffset: number; yOffset: number }> = {},
-    ): void {
+    public fromDataURL(dataUrl: string, options: FromDataUrlOptions = {}): void {
         this.signaturePad.fromDataURL(dataUrl, options);
     }
 
@@ -285,8 +291,19 @@ class SignaturePad extends React.PureComponent<Props, State> {
      * @param {?number} encoderOptions
      * @return {string}
      */
-    toDataURL(type?: string, encoderOptions?: number): string {
+    public toDataURL(type?: string, encoderOptions?: number): string {
         return this.signaturePad.toDataURL(type, encoderOptions);
+    }
+
+    /**
+     * Get the signature data as an SVG data URL.
+     *
+     * @param {string} mime
+     * @param {?ToSVGOptions} encoderOptions
+     * @return {string}
+     */
+    public toSvgDataUrl(encoderOptions?: ToSVGOptions): string {
+        return this.signaturePad.toDataURL('image/svg+xml', encoderOptions);
     }
 
     /**
@@ -365,12 +382,6 @@ class SignaturePad extends React.PureComponent<Props, State> {
 
         if (width === canvasWidth && height === canvasHeight) return;
 
-        let data;
-
-        if (this.props.redrawOnResize && this.signaturePad && !this.signaturePad.isEmpty()) {
-            data = this.signaturePad.toDataURL();
-        }
-
         canvas.width = width;
         canvas.height = height;
 
@@ -382,10 +393,8 @@ class SignaturePad extends React.PureComponent<Props, State> {
             ctx.scale(ratio, ratio);
         }
 
-        if (data) {
-            this.signaturePad.fromDataURL(data);
-        } else if (this.signaturePad) {
-            this.signaturePad.clear();
+        if (this.props.redrawOnResize && this.signaturePad) {
+            this.redraw();
         }
     }
 

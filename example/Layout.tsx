@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { useRef, useCallback, useState, useEffect } from 'react';
 
 import SignaturePad from '../src/SignaturePad';

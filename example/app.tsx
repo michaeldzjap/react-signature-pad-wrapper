@@ -1,10 +1,16 @@
-import * as React from 'react';
+import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 
 import Layout from './Layout';
 
-const element = document.getElementById('root');
+const rootElement = document.getElementById('root');
 
-if (element) {
-    createRoot(element).render(<Layout />);
+if (!rootElement) {
+    throw new Error('Failed to find the root element');
 }
+
+createRoot(rootElement).render(
+    <StrictMode>
+        <Layout />
+    </StrictMode>,
+);

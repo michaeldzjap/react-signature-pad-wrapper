@@ -10,7 +10,7 @@
     "declaration": true,
     "declarationDir": "./dist",
     "outDir": "./dist",
-    "jsx": "react"
+    "jsx": "react-jsx"
   },
   "include": ["**/*"],
   "exclude": ["node_modules", "dist", "example"]

@@ -1,40 +1,58 @@
 import * as React from 'react';
 
+import { useRef, useCallback, useState, useEffect } from 'react';
+
 import SignaturePad from '../src/SignaturePad';
 
 /**
- * @class
- * @classdesc Layout component.
- * @extends {PureComponent}
+ * Layout component for the signature pad example.
+ * Demonstrates a responsive signature pad with clear and save functionality.
  */
-class Layout extends React.PureComponent {
+const Layout = () => {
+    const signaturePadRef = useRef<SignaturePad>(null);
+    const [hasSignature, setHasSignature] = useState(false);
+    const [savedSignature, setSavedSignature] = useState<string | null>(null);
+
     /**
-     * The signature pad component reference.
-     *
-     * @var {RefObject}
+     * Set up event listeners for tracking signature state.
      */
-    private signaturePadRef = React.createRef<SignaturePad>();
+    useEffect(() => {
+        const signaturePad = signaturePadRef.current;
+
+        if (!signaturePad) {
+            return;
+        }
+
+        const handleBeginStroke = () => {
+            setHasSignature(true);
+        };
+
+        // Add event listeners
+        signaturePad.instance.addEventListener('beginStroke', handleBeginStroke);
+
+        // Cleanup event listeners
+        return () => {
+            signaturePad.instance.removeEventListener('beginStroke', handleBeginStroke);
+        };
+    }, []);
 
     /**
      * Clear the signature pad.
-     *
-     * @return {void}
      */
-    handleClear(): void {
-        const signaturePad = this.signaturePadRef.current;
+    const handleClear = useCallback(() => {
+        const signaturePad = signaturePadRef.current;
 
         if (signaturePad) {
             signaturePad.instance.clear();
+            setHasSignature(false);
         }
-    }
+    }, []);
 
     /**
-     * Save a signature.
-     *
-     * @return {void}
+     * Save the signature by opening it in a new window.
      */
-    handleSave(): void {
-        const signaturePad = this.signaturePadRef.current;
+    const handleSave = useCallback(() => {
+        const signaturePad = signaturePadRef.current;
 
         if (!signaturePad) {
             return;
@@ -43,73 +61,83 @@ class Layout extends React.PureComponent {
         if (signaturePad.isEmpty()) {
             alert('Please provide a signature first.');
         } else {
-            window.open(signaturePad.toDataURL());
+            const dataURL = signaturePad.toDataURL();
+            setSavedSignature(dataURL);
         }
-    }
+    }, []);
 
-    /**
-     * Render the title.
-     *
-     * @return {ReactNode}
-     */
-    renderTitle(): React.ReactNode {
-        return (
-            <div className="columns">
-                <div className="column">
-                    <h1 className="title">React-Signature-Pad-Wrapper</h1>
-                    <h2 className="subtitle">responsive example</h2>
-                </div>
-            </div>
-        );
-    }
-
-    /**
-     * Render the signature pad.
-     *
-     * @return {ReactNode}
-     */
-    renderSignaturePad(): React.ReactNode {
-        return (
-            <div className="columns">
-                <div className="column is-10-tablet is-offset-1-tablet is-8-desktop is-offset-2-desktop">
-                    <div className="card">
-                        <div className="card-content">
-                            <div className="content">
-                                <SignaturePad redrawOnResize ref={this.signaturePadRef} />
-                            </div>
-                        </div>
-                        <footer className="card-footer">
-                            <a className="card-footer-item" onClick={this.handleClear.bind(this)}>
-                                Clear
-                            </a>
-                            <p className="card-footer-item">
-                                <span>sign above</span>
-                            </p>
-                            <a className="card-footer-item" onClick={this.handleSave.bind(this)}>
-                                Save
-                            </a>
-                        </footer>
+    return (
+        <section className="section">
+            <div className="container">
+                <div className="columns">
+                    <div className="column has-text-centered">
+                        <h1 className="title is-2 has-text-black">Digital Signature Pad</h1>
+                        <h2 className="subtitle is-5 has-text-black">Create your signature with ease</h2>
                     </div>
                 </div>
-            </div>
-        );
-    }
 
-    /**
-     * Render the layout component.
-     *
-     * @return {ReactNode}
-     */
-    render(): React.ReactNode {
-        return (
-            <section className="section">
-                <div className="container">
-                    {this.renderTitle()}
-                    {this.renderSignaturePad()}
+                <div className="columns">
+                    <div className="column is-10-tablet is-offset-1-tablet is-6-desktop is-offset-3-desktop">
+                        <div className="card">
+                            <div className="card-content">
+                                <div className="content">
+                                    <p className="has-text-centered has-text-grey">
+                                        Sign in the box below using your mouse or touch screen
+                                    </p>
+                                    <div>
+                                        <SignaturePad redrawOnResize ref={signaturePadRef} />
+                                    </div>
+                                </div>
+                            </div>
+                            <footer className="card-footer">
+                                <button
+                                    type="button"
+                                    className="card-footer-item button is-light"
+                                    onClick={handleClear}
+                                    disabled={!hasSignature}
+                                    aria-label="Clear signature"
+                                >
+                                    <span className="icon">
+                                        <i className="fas fa-eraser"></i>
+                                    </span>
+                                    <span>Clear</span>
+                                </button>
+                                <div className="card-footer-item">
+                                    <span>Sign above</span>
+                                </div>
+                                <button
+                                    type="button"
+                                    className="card-footer-item button is-primary"
+                                    onClick={handleSave}
+                                    aria-label="Save signature"
+                                >
+                                    <span className="icon">
+                                        <i className="fas fa-save"></i>
+                                    </span>
+                                    <span>Save</span>
+                                </button>
+                            </footer>
+                        </div>
+                    </div>
                 </div>
-            </section>
-        );
-    }
-}
+
+                {savedSignature && (
+                    <div className="columns">
+                        <div className="column is-10-tablet is-offset-1-tablet is-6-desktop is-offset-3-desktop">
+                            <div className="card">
+                                <div className="card-content">
+                                    <h3 className="is-size-5 has-text-centered">✅ Saved Signature</h3>
+                                    <div>
+                                        <img src={savedSignature || '/placeholder.svg'} alt="Saved signature" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+        </section>
+    );
+};
 
 export default Layout;

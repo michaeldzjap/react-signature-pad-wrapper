@@ -73,7 +73,7 @@
   },
   "dependencies": {
     "prop-types": "^15.8.1",
-    "signature_pad": "^5.0.1",
+    "signature_pad": "^5.1.0",
     "throttle-debounce": "^5.0.0"
   },
   "lint-staged": {

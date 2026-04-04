@@ -6,7 +6,6 @@
     "noEmit": true,
     "removeComments": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
     "verbatimModuleSyntax": true,
     "useDefineForClassFields": true,
     "forceConsistentCasingInFileNames": true,

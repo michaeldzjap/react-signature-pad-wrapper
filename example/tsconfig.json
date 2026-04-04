@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "target": "es5",
+    "moduleResolution": "bundler",
+    "target": "es2015",
     "module": "esnext",
     "lib": ["es5", "es6", "es7", "dom"],
     "removeComments": true,
@@ -9,6 +9,7 @@
     "sourceMap": true,
     "declaration": true,
     "declarationDir": "./dist",
+    "rootDir": "..",
     "outDir": "./dist",
     "jsx": "react-jsx"
   },

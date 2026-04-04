@@ -1,6 +1,3 @@
 {
-  "extends": "./tsconfig.base",
-  "compilerOptions": {
-    "esModuleInterop": false
-  }
+  "extends": "./tsconfig.base"
 }

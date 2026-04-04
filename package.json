@@ -40,7 +40,7 @@
     "@eslint/js": "^9.9.1",
     "@rollup/plugin-commonjs": "^29.0.0",
     "@rollup/plugin-node-resolve": "^16.0.1",
-    "@rollup/plugin-terser": "^0.4.0",
+    "@rollup/plugin-terser": "^1.0.0",
     "@rollup/plugin-typescript": "^12.1.1",
     "@testing-library/jest-dom": "^6.1.2",
     "@testing-library/react": "^16.0.0",
@@ -52,7 +52,7 @@
     "@types/throttle-debounce": "^5.0.0",
     "canvas": "^3.1.2",
     "cross-env": "^10.0.0",
-    "eslint": "^9.9.1",
+    "eslint": "^10.1.0",
     "eslint-config-prettier": "^10.1.5",
     "eslint-plugin-jest": "^29.0.1",
     "eslint-plugin-jest-dom": "^5.0.1",
@@ -68,7 +68,7 @@
     "rollup": "^4.5.0",
     "ts-jest": "^29.0.0",
     "tslib": "^2.8.1",
-    "typescript": "^5.0.2",
+    "typescript": "^6.0.2",
     "typescript-eslint": "^8.4.0"
   },
   "dependencies": {

@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "moduleResolution": "bundler",
-    "target": "es2015",
-    "module": "esnext",
-    "lib": ["es5", "es6", "es7", "dom"],
+    "moduleResolution": "Bundler",
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["ESNext", "DOM"],
     "removeComments": true,
     "strict": true,
     "sourceMap": true,

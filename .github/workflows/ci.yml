@@ -7,17 +7,17 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        node-version: [22.x, 23.x, 24.x]
+        node-version: [23.x, 24.x, 25.x]
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v5
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
       - name: Install
-        run: npm ci
+        run: npm i --ignore-scripts
       - name: Lint
         run: npm run lint
       - name: Build
@@ -25,10 +25,10 @@ jobs:
       - name: Test
         run: npm run test
       - name: Upload coverage report
-        uses: codecov/codecov-action@v5
-        if: ${{ matrix.os == 'ubuntu-latest' && matrix.node-version == '24.x' }}
+        uses: codecov/codecov-action@v6
+        if: ${{ matrix.os == 'ubuntu-latest' && matrix.node-version == '25.x' }}
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v6
+        uses: SonarSource/sonarqube-scan-action@v8
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        if: ${{ matrix.os == 'ubuntu-latest' && matrix.node-version == '24.x' }}
+        if: ${{ matrix.os == 'ubuntu-latest' && matrix.node-version == '25.x' }}

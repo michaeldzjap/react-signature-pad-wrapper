@@ -266,7 +266,7 @@ class SignaturePad extends React.PureComponent<Props, State> {
 
     /**
      * Redraw the signature.
-     * 
+     *
      * @return {void}
      */
     public redraw(): void {

@@ -6,9 +6,11 @@ type Props = {
     height?: number;
     options?: Options;
     canvasProps?: {
-        [key: string]: string | {
-            [key: string]: string;
-        };
+        [key: string]:
+            | string
+            | {
+                  [key: string]: string;
+              };
     };
 } & DefaultProps;
 type DefaultProps = {

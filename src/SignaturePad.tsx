@@ -278,10 +278,10 @@ class SignaturePad extends React.PureComponent<Props, State> {
      *
      * @param {string} dataUrl
      * @param {object} options
-     * @return {void}
+     * @return {Promise<void>}
      */
-    public fromDataURL(dataUrl: string, options: FromDataUrlOptions = {}): void {
-        this.signaturePad.fromDataURL(dataUrl, options);
+    public fromDataURL(dataUrl: string, options: FromDataUrlOptions = {}): Promise<void> {
+        return this.signaturePad.fromDataURL(dataUrl, options);
     }
 
     /**
